@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy 24th Birthday Sabrina Octariana 🩵</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Quicksand, Caveat, and Dancing Script -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            customBase: '#C8DFDB',
+            softMint: '#D7ECE8',
+            deepTeal: '#2c4a52',
+            accentSky: '#8ec5d6',
+            cardBorder: 'rgba(255, 255, 255, 0.85)'
+          },
+          fontFamily: {
+            sans: ['Quicksand', 'sans-serif'],
+            script: ['Caveat', 'cursive'],
+            fancy: ['Dancing Script', 'cursive'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    * {
+      user-select: none;
+      -webkit-user-select: none;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #e3f2ef, #C8DFDB, #b8dfd8, #d2ede8, #c1e6e0);
+      background-size: 400% 400%;
+      animation: smoothGradient 18s ease infinite;
+      font-family: 'Quicksand', sans-serif;
+      color: #2c4a52;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+    }
+
+    @keyframes smoothGradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Ambient drifting aesthetic pastel circles */
+    .drifting-bubble {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.55;
+      animation: floatDrift 16s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatDrift {
+      0% { transform: translate(0px, 0px) scale(1); }
+      50% { transform: translate(40px, -45px) scale(1.12); }
+      100% { transform: translate(-30px, 35px) scale(0.95); }
+    }
+
+    /* Canvas for Falling White Flower Petal Drizzle */
+    #petalCanvas {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Fixed Glassmorphic Card Container */
+    .main-glass-card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1.5px solid rgba(255, 255, 255, 0.95);
+      box-shadow: 0 20px 45px rgba(44, 74, 82, 0.12), 0 5px 15px rgba(0, 0, 0, 0.03);
+    }
+
+    /* Floating Heart Trail Particle */
+    .cursor-love-particle {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      animation: loveFloat 1.3s cubic-bezier(0.12, 0.8, 0.32, 1.2) forwards;
+    }
+
+    @keyframes loveFloat {
+      0% {
+        opacity: 0.95;
+        transform: translate(-50%, -50%) scale(0.5) rotate(0deg);
+      }
+      50% {
+        opacity: 0.8;
+        transform: translate(calc(-50% + var(--rx)), calc(-50% - 50px)) scale(1.15) rotate(var(--rot));
+      }
+      100% {
+        opacity: 0;
+        transform: translate(calc(-50% + var(--rx2)), calc(-50% - 110px)) scale(0.3) rotate(var(--rot2));
+      }
+    }
+
+    /* Fixed Slide Container & Inner Transitions (No downward jumping) */
+    .slide-wrapper {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      pointer-events: none;
+      transform: scale(0.98);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .slide-wrapper.active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: scale(1);
+    }
+
+    /* Custom Inner Scrollbar for long stories */
+    .inner-scroll::-webkit-scrollbar {
+      width: 5px;
+    }
+    .inner-scroll::-webkit-scrollbar-thumb {
+      background: #9bc7c1;
+      border-radius: 999px;
+    }
+    .inner-scroll::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    /* Vinyl disc rotation */
+    .vinyl-spinning {
+      animation: spinVinyl 5s linear infinite;
+    }
+    @keyframes spinVinyl {
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+
+<body class="relative min-h-screen h-screen flex flex-col justify-between items-center p-3 sm:p-5 select-none">
+
+  <!-- Ambient Animated Drifting Blobs -->
+  <div class="drifting-bubble w-80 h-80 bg-[#aee2da] -top-20 -left-20"></div>
+  <div class="drifting-bubble w-96 h-96 bg-[#c5ede6] -bottom-24 -right-20" style="animation-delay: -6s;"></div>
+  <div class="drifting-bubble w-72 h-72 bg-[#bfe7e0] top-1/3 left-1/3" style="animation-delay: -11s;"></div>
+
+  <!-- Petals Canvas (Gerimis Bunga Putih) -->
+  <canvas id="petalCanvas"></canvas>
+
+  <!-- YouTube Hidden Audio Frame (Strictly OT5msu-dap8) -->
+  <div id="ytHost" class="fixed -left-[9999px] -top-[9999px] w-1 h-1 opacity-0 pointer-events-none">
+    <div id="ytFrame"></div>
+  </div>
+
+  <!-- Top Header Navigation & Official Music Controller -->
+  <header class="w-full max-w-xl z-30 flex justify-between items-center py-1">
+    <div class="flex items-center gap-2 text-deepTeal font-semibold text-xs sm:text-sm bg-white/80 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white shadow-sm">
+      <span class="inline-block w-2.5 h-2.5 rounded-full bg-teal-500 animate-ping"></span>
+      <span class="font-bold tracking-wide">Sabrina Octariana 🩵</span>
+    </div>
+
+    <!-- Official YouTube Music Controller Widget -->
+    <div class="flex items-center gap-2">
+      <button id="musicToggleBtn" onclick="toggleOfficialMusic()" class="flex items-center gap-2 bg-white/90 backdrop-blur-md hover:bg-white text-deepTeal px-3.5 py-1.5 rounded-full border border-white shadow-sm transition-all duration-300 active:scale-95 group">
+        <div id="vinylIcon" class="w-6 h-6 rounded-full bg-teal-600/10 flex items-center justify-center text-teal-700 transition-transform">
+          <i class="fa-solid fa-compact-disc text-sm"></i>
+        </div>
+        <div class="text-left text-xs leading-tight pr-1">
+          <p class="font-bold text-deepTeal" id="musicStatusText">Putar Lagu 🎵</p>
+          <p class="text-[10px] text-gray-500 truncate max-w-[130px]">Shape Of My Heart</p>
+        </div>
+        <i id="playStateIcon" class="fa-solid fa-play text-xs text-teal-600 ml-1"></i>
+      </button>
+
+      <!-- Direct Link in case iframe is sandboxed/restricted by user network -->
+      <a href="https://youtu.be/OT5msu-dap8" target="_blank" rel="noopener noreferrer" title="Buka lagu langsung di YouTube" class="w-8 h-8 rounded-full bg-white/80 backdrop-blur-md hover:bg-red-50 text-red-600 flex items-center justify-center border border-white shadow-sm transition-all text-xs">
+        <i class="fa-brands fa-youtube"></i>
+      </a>
+    </div>
+  </header>
+
+  <!-- Primary Card Container with Locked Dimensions to Prevent Downward Jumping -->
+  <main class="w-full max-w-xl z-20 my-auto flex flex-col items-center">
+    <div class="main-glass-card w-full rounded-3xl p-5 sm:p-7 relative transition-all duration-300 overflow-hidden h-[540px] sm:h-[500px] flex flex-col justify-between">
+
+      <!-- Step Indicator Dots -->
+      <div class="flex justify-center items-center gap-1.5 mb-2 z-10" id="stepDotsContainer">
+        <!-- Injected via JavaScript -->
+      </div>
+
+      <!-- Locked Inner Viewport -->
+      <div class="relative w-full flex-1 overflow-hidden" id="cardViewport">
+
+        <!-- ================= SLIDE 0: FIRST INTRO & UPWARD TRANSLATION ================= -->
+        <section id="slide0" class="slide-wrapper active items-center text-center justify-center px-2">
+          <div class="my-auto flex flex-col items-center w-full">
+            <div class="w-16 h-16 rounded-full bg-teal-100/90 text-teal-700 flex items-center justify-center mb-3 text-2xl shadow-inner animate-bounce">
+              🎂
+            </div>
+            
+            <!-- Big Initial Title that moves up smoothly -->
+            <h1 id="slide0BigTitle" class="text-2xl sm:text-3xl font-extrabold text-deepTeal tracking-wide transition-all duration-700 transform translate-y-0">
+              SELAMAATT ULANGG TAHUUNNN!!
+            </h1>
+
+            <!-- Birthday paragraph reveal -->
+            <div id="slide0SubtitleBox" class="mt-4 transition-all duration-700 opacity-0 translate-y-4 max-h-0 overflow-hidden w-full">
+              <p class="text-xs sm:text-sm text-slate-700 font-medium leading-relaxed bg-white/60 p-4 rounded-2xl border border-white/80 shadow-sm">
+                "selamaatt ulangg tahunn sabrinaa octarianaa yang ke 24!!! semogaaa kamuuu diberiiii kesehatann selaluuu biarr semakinnn goqilllll mwheheheh, semogaaa kamuu diberiii rezekiii jugaaa yang sangat melimpaahh sekaliii sampee satuu rumahh penuh uwang AHAHAHHA"
+              </p>
+            </div>
+
+            <!-- Bordered Selanjutnya button -->
+            <div id="slide0BtnWrapper" class="mt-5 w-full opacity-0 transition-all duration-500">
+              <button onclick="goToSlide(1)" class="w-full py-3 px-6 rounded-2xl border-2 border-teal-600 bg-white/80 hover:bg-teal-600 hover:text-white text-teal-800 font-bold text-sm sm:text-base transition-all duration-300 shadow-md flex items-center justify-center gap-2 group">
+                <span>Selanjutnya</span>
+                <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= SLIDE 1: 5 BULAN PERTEMANAN ================= -->
+        <section id="slide1" class="slide-wrapper">
+          <div>
+            <div class="flex items-center gap-2 text-deepTeal font-bold mb-2 text-xs sm:text-sm">
+              <span class="w-6 h-6 rounded-full bg-teal-100 flex items-center justify-center text-xs">💬</span>
+              <span>Dari lubuk hatiku yang paling tulus</span>
+            </div>
+
+            <div class="bg-white/60 p-4 sm:p-5 rounded-2xl border border-white/80 h-[340px] sm:h-[310px] overflow-y-auto inner-scroll text-slate-700 text-xs sm:text-sm leading-relaxed space-y-3">
+              <p class="font-bold text-deepTeal">
+                "disiniiii, akuu mww bilangg sesuatuuu
+              </p>
+              <p>
+                setelahh kitaaa menjalinn pertemanann dekattt selamaa kurang lebih 5 bulannn, akuu merasaa bahwaaa kamuu benarr benaarr istimewaaa sertaaa langkaa sekalii, <span class="font-bold text-teal-800">SANGATT SANGAATTT LANGKAAAA SEKALII veryy veryyy ultra raree</span>, kenapaa akuu bilang begitu??
+              </p>
+              <p>
+                yaa karenaa kamuu tuu wanitaa dengann seribuuu kelebihan, jujurrr sebelum kitaa kenal dekett, akuu sangatt mengagumiii kamuuu, mulaii darii caraa bicaraa kamuu yang lucuuu sertaa absurd/unikkk, kebiasaan yang bikinn akuu ngikutinn ituu, contohh kamuu kan sering belii kopyy, bobo kesiangan (jass kiding), cara bicaraa kamuu, dan lain sebagainyaaa."
+              </p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3 pt-2">
+            <button onclick="goToSlide(0)" class="py-2.5 px-4 rounded-xl border border-slate-300 bg-white/70 hover:bg-white text-slate-700 font-semibold text-xs sm:text-sm transition-all duration-200">
+              <i class="fa-solid fa-arrow-left mr-1"></i> Kembali
+            </button>
+            <button onclick="goToSlide(2)" class="py-2.5 px-4 rounded-xl border-2 border-teal-600 bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs sm:text-sm transition-all duration-200 shadow-sm flex items-center justify-center gap-2">
+              <span>Selanjutnya</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </section>
+
+        <!-- ================= SLIDE 2: KEKAGUMAN & DOUBLE POLAROID ================= -->
+        <section id="slide2" class="slide-wrapper">
+          <div>
+            <div class="flex items-center gap-2 text-deepTeal font-bold mb-2 text-xs sm:text-sm">
+              <span class="w-6 h-6 rounded-full bg-cyan-100 flex items-center justify-center text-xs">✨</span>
+              <span>The most gorgeous girl I've ever met</span>
+            </div>
+
+            <div class="bg-white/60 p-4 sm:p-5 rounded-2xl border border-white/80 h-[340px] sm:h-[310px] overflow-y-auto inner-scroll text-slate-700 text-xs sm:text-sm leading-relaxed space-y-4">
+              
+              <!-- Aesthetic Vintage Double Polaroid Scrapbook Gallery -->
+              <div class="flex flex-wrap sm:flex-nowrap justify-center items-center gap-4 py-2 my-1">
+                <!-- Polaroid 1 (Mirror Selfie) -->
+                <div class="relative bg-white p-2.5 pb-3 rounded-md shadow-lg border border-slate-200/90 transform -rotate-3 hover:rotate-0 hover:scale-105 hover:z-20 transition-all duration-300 w-36 sm:w-44 select-none group">
+                  <!-- Cute Washi Tape effect on top -->
+                  <div class="absolute -top-2.5 left-1/2 -translate-x-1/2 w-14 h-4 bg-teal-200/70 backdrop-blur-sm -rotate-2 rounded-sm border-t border-b border-white/60 shadow-sm pointer-events-none"></div>
+                  
+                  <!-- Photo Container -->
+                  <div class="overflow-hidden rounded bg-slate-900 aspect-[3/4] relative shadow-inner">
+                    <img 
+                      src="images/foto1.png" alt="Sabrina" class="w-full h-56 md:h-64 object-cover rounded-sm" 
+                      alt="Sabrina Octariana" 
+                      class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-white/10 pointer-events-none"></div>
+                  </div>
+
+                  <!-- Polaroid Handwritten Caption -->
+                  <div class="pt-2 text-center">
+                    <p class="font-script text-base sm:text-lg text-teal-900 font-bold leading-none tracking-wide">
+                      Sabrina ✨
+                    </p>
+                    <p class="text-[9px] text-slate-500 font-mono mt-0.5 tracking-wider">the most gorgeous girl</p>
+                  </div>
+                </div>
+
+                <!-- Polaroid 2 (Cutest Smile) -->
+                <div class="relative bg-white p-2.5 pb-3 rounded-md shadow-lg border border-slate-200/90 transform rotate-3 hover:rotate-0 hover:scale-105 hover:z-20 transition-all duration-300 w-36 sm:w-44 select-none group">
+                  <!-- Cute Washi Tape effect on top -->
+                  <div class="absolute -top-2.5 left-1/2 -translate-x-1/2 w-14 h-4 bg-pink-200/70 backdrop-blur-sm rotate-2 rounded-sm border-t border-b border-white/60 shadow-sm pointer-events-none"></div>
+                  
+                  <!-- Photo Container -->
+                  <div class="overflow-hidden rounded bg-slate-900 aspect-[3/4] relative shadow-inner">
+                    <img 
+                      src="images/foto2.png" alt="Sabrina Smile" class="w-full h-56 md:h-64 object-cover rounded-sm"
+                      alt="Sabrina Octariana Smile" 
+                      class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-white/10 pointer-events-none"></div>
+                  </div>
+
+                  <!-- Polaroid Handwritten Caption -->
+                  <div class="pt-2 text-center">
+                    <p class="font-script text-base sm:text-lg text-teal-900 font-bold leading-none tracking-wide">
+                      Cutest smile 🌸
+                    </p>
+                    <p class="text-[9px] text-slate-500 font-mono mt-0.5 tracking-wider">she melts my heart</p>
+                  </div>
+                </div>
+              </div>
+
+              <p>
+                "aku jugaa sangat sangat sangaaattt mengagumi seberapaa cantikkk kamuuu, kayak <span class="font-bold text-teal-800">WHAATT, SHE IS THE MOST GORGEOUS GIRL I'VE EVER MET</span>, tidaaa cumaa ituu, kitaaa memiliki seleraa yang samaaa, yang membuat dirikuu menjadii luluhh seketikaa, sepertiii seleraaa musikk kitaa, rasa minuman yang kita sukaa, serta warna favorit, warna favorit kamuu biru muda kan??
+              </p>
+              <p>
+                jujur samaaaa, warna biruu mudaa tuu warna favoritkuu yang pertamaa kalii nyaa, ituu alasann akuu pakee skin Minecraft kombinasi warna dominan biru putih:v, memilikii seleraa gamingg jugaaaa, dannn kitaa samaa samaaa tidaa keluarr rumahh selagii tidaa ada yang mengajak:V AHAHHAHAHAH,
+              </p>
+              <p>
+                oh i wish im in jakarta rn so we can hang out together, kitaa bersenangg senanggg kelilingg jajanann yang adaa disanaaa, akuu tauu kamuu sukaa bangett jajann, dan akuu jugaaa sukaa bangett, but kaloo tidaa ada yang mengajak, aku rasanyaaa kayak adaa yg kurangg gituu, jadinyaa akuu jarang jajan gituu:v, bukan karena aku tidaa mauu boros, tapi feelnya bedaa sekalii ehehhe."
+              </p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3 pt-2">
+            <button onclick="goToSlide(1)" class="py-2.5 px-4 rounded-xl border border-slate-300 bg-white/70 hover:bg-white text-slate-700 font-semibold text-xs sm:text-sm transition-all duration-200">
+              <i class="fa-solid fa-arrow-left mr-1"></i> Kembali
+            </button>
+            <button onclick="goToSlide(3)" class="py-2.5 px-4 rounded-xl border-2 border-teal-600 bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs sm:text-sm transition-all duration-200 shadow-sm flex items-center justify-center gap-2">
+              <span>Selanjutnya</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </section>
+
+        <!-- ================= SLIDE 3: PERNYATAAN CINTA & RUNAWAY BUTTON ================= -->
+        <section id="slide3" class="slide-wrapper">
+          <div class="my-auto text-center px-1">
+            <div class="inline-block p-3 rounded-full bg-rose-100 text-rose-500 mb-3 animate-pulse">
+              <i class="fa-solid fa-heart text-2xl"></i>
+            </div>
+
+            <h2 class="text-sm sm:text-base font-bold text-deepTeal leading-relaxed">
+              "akuu jujurrr, aku suka samaa kamuuu, im really reallyy like u, <span class="text-rose-600 font-extrabold">NOT JUST LIKE, BUT IM REALLY REALLY LOVEE YOUU SOOO MUCH</span>, jadiii, will youu be my girlfriend from now andd foroverrr???"
+            </h2>
+            <p class="font-script text-2xl text-teal-800 mt-2 font-bold">~ Sabrina Octariana ~</p>
+          </div>
+
+          <!-- Runaway Playground Area (Click-only dodge) -->
+          <div class="pt-2 relative flex flex-col justify-end">
+            <div id="proposalActionContainer" class="flex flex-col sm:flex-row items-center justify-center gap-3 relative min-h-[90px]">
+              
+              <!-- Pilihan 1: MAUU -->
+              <button onclick="handleAcceptProposal()" class="w-full sm:w-1/2 py-3 px-5 rounded-2xl bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 text-white font-bold text-sm sm:text-base shadow-md hover:shadow-cyan-400/30 transition-all duration-200 transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2 z-10">
+                <i class="fa-solid fa-heart"></i>
+                <span>MAUU ❤️</span>
+              </button>
+
+              <!-- Pilihan 2: gamauk wlee (DODGES ONLY WHEN CLICKED) -->
+              <button id="runawayBtn" onclick="dodgeGamaukClick(event)" class="w-full sm:w-1/2 py-3 px-5 rounded-2xl border border-slate-300 bg-white/90 hover:bg-white text-slate-700 font-semibold text-sm sm:text-base transition-all duration-200 select-none shadow-sm cursor-pointer whitespace-nowrap active:scale-90 z-20">
+                gamauk wlee 😜
+              </button>
+            </div>
+
+            <!-- Tombol Kembali -->
+            <div class="mt-2 text-center">
+              <button onclick="goToSlide(2)" class="text-xs text-slate-500 hover:text-slate-800 underline decoration-dotted transition-colors">
+                <i class="fa-solid fa-arrow-left mr-1"></i> Kembali ke teks sebelumnya
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= SLIDE 4: YIPPIE DITERIMA ================= -->
+        <section id="slide4" class="slide-wrapper">
+          <div class="my-auto flex flex-col justify-center items-center text-center px-2">
+            <div class="text-5xl animate-bounce mb-3">
+              🥳💖✨
+            </div>
+            <h2 class="text-lg sm:text-xl font-extrabold text-teal-800 leading-snug">
+              "YIIPPPPPPIIIIIIII, TIMAAACIIIIIII SUDAAA MAWWW NERIMAA AKUU MWEHEHEHEHEH, ILYSMMMMM"
+            </h2>
+            <p class="font-fancy text-2xl text-rose-500 font-bold mt-3">
+              Officially Together! 🩵
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3 pt-2">
+            <button onclick="goToSlide(3)" class="py-2.5 px-4 rounded-xl border border-slate-300 bg-white/70 hover:bg-white text-slate-700 font-semibold text-xs sm:text-sm transition-all duration-200">
+              <i class="fa-solid fa-arrow-left mr-1"></i> Kembali
+            </button>
+            <button onclick="goToSlide(5)" class="py-2.5 px-4 rounded-xl border-2 border-teal-600 bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs sm:text-sm transition-all duration-200 shadow-sm flex items-center justify-center gap-2">
+              <span>Selanjutnya 💌</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </section>
+
+        <!-- ================= SLIDE 5: MODEL HUBUNGAN ================= -->
+        <section id="slide5" class="slide-wrapper">
+          <div class="my-auto text-center px-1">
+            <div class="w-10 h-10 rounded-full bg-teal-100 text-teal-700 flex items-center justify-center mx-auto mb-2 text-base">
+              🤝
+            </div>
+            <h2 class="text-base sm:text-lg font-bold text-deepTeal">
+              "Kamuu mauu hubungan ini sepertii bagaimanaa?"
+            </h2>
+            <p class="text-xs text-slate-500 mt-0.5">Pilih salah satu sesuai kenyamanan kamu yaa:</p>
+
+            <div class="mt-4 space-y-2.5 text-left">
+              <button onclick="chooseRelationship('Public')" class="w-full p-3 rounded-2xl border-2 border-white/80 bg-white/75 hover:bg-white hover:border-teal-500 text-slate-800 font-semibold text-xs sm:text-sm transition-all duration-200 flex items-center justify-between group shadow-sm">
+                <span class="flex items-center gap-3">
+                  <span class="w-7 h-7 rounded-xl bg-teal-50 flex items-center justify-center text-teal-700 text-xs">🌍</span>
+                  <span>1. Public</span>
+                </span>
+                <i class="fa-solid fa-circle-check text-slate-300 group-hover:text-teal-600 transition-colors"></i>
+              </button>
+
+              <button onclick="chooseRelationship('Private but not secret')" class="w-full p-3 rounded-2xl border-2 border-white/80 bg-white/75 hover:bg-white hover:border-teal-500 text-slate-800 font-semibold text-xs sm:text-sm transition-all duration-200 flex items-center justify-between group shadow-sm">
+                <span class="flex items-center gap-3">
+                  <span class="w-7 h-7 rounded-xl bg-teal-50 flex items-center justify-center text-teal-700 text-xs">🔐</span>
+                  <span>2. Private but not secret</span>
+                </span>
+                <i class="fa-solid fa-circle-check text-slate-300 group-hover:text-teal-600 transition-colors"></i>
+              </button>
+
+              <button onclick="chooseRelationship('Private only')" class="w-full p-3 rounded-2xl border-2 border-white/80 bg-white/75 hover:bg-white hover:border-teal-500 text-slate-800 font-semibold text-xs sm:text-sm transition-all duration-200 flex items-center justify-between group shadow-sm">
+                <span class="flex items-center gap-3">
+                  <span class="w-7 h-7 rounded-xl bg-teal-50 flex items-center justify-center text-teal-700 text-xs">🤫</span>
+                  <span>3. Private only</span>
+                </span>
+                <i class="fa-solid fa-circle-check text-slate-300 group-hover:text-teal-600 transition-colors"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3 pt-2">
+            <button onclick="goToSlide(4)" class="py-2.5 px-4 rounded-xl border border-slate-300 bg-white/70 hover:bg-white text-slate-700 font-semibold text-xs sm:text-sm transition-all duration-200">
+              <i class="fa-solid fa-arrow-left mr-1"></i> Kembali
+            </button>
+            <button onclick="goToSlide(6)" class="py-2.5 px-4 rounded-xl border-2 border-teal-600 bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs sm:text-sm transition-all duration-200 shadow-sm flex items-center justify-center gap-2">
+              <span>Selanjutnya</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </section>
+
+        <!-- ================= SLIDE 6: KEJUJURAN TIKTOK ================= -->
+        <section id="slide6" class="slide-wrapper">
+          <div>
+            <div class="flex items-center gap-2 text-deepTeal font-bold mb-2 text-xs sm:text-sm">
+              <span class="w-6 h-6 rounded-full bg-cyan-100 flex items-center justify-center text-xs">🤫</span>
+              <span>Oiyaaa satu lagii, aku mww jujurrr...</span>
+            </div>
+
+            <div class="bg-white/60 p-4 sm:p-5 rounded-2xl border border-white/80 h-[340px] sm:h-[310px] overflow-y-auto inner-scroll text-slate-700 text-xs sm:text-sm leading-relaxed space-y-3">
+              <p>
+                "oiyaaaa satuu lagii, akuu mww jujurrr, sebenarnyaaaa sehariii sebelumm akuu punyaa nomor wa kamuu, akuu tanpaa sengajaa nemuu akun tiktok kamuu yang khusus upload keseharian kamuu, jujurr tidaaa adaa label kayak "orang yang mungkin anda kenal" ituu tidaak, cuma tiba tibaa lewat di fyp akuu, jujurr meskipun kita sudaahh resmii/official, akuu tidaa mempersalahkan ituu, entah kamuuu pengen uploadd video/fotoo keseharian kamuuu ituu bebasss,
+              </p>
+              <p>
+                akuu tidaaa melarangg kesenangan kamuu, <span class="font-bold text-teal-800">tapyyy dengann catataannn, kamuuu taww bataasss otaayy??</span> maksudkuu kayakk kaloo kamuu tiba tibaaa di dm orangg lainn atau siapapun yangg bukann temenn kamuu, kayak istilahnya "buwaya" gituu akuu mintaa tolongg jangann dii baless/dijawabb yaaaa,
+              </p>
+              <p>
+                maafff yaaa akuu baruu ngomongg sekaranggg, alasannyaaaa akuuu pengenn kamuu ngerasaa bebass tanpaaa tauu kaloo akuu udahh mengetahui akunn kamuuu gituu, jadii kamu bisaa lebihh merasaa bebass gituuu ehheheheh, akuu sangattt menghargaii kebebasann kamuu, aku tidaa mauu kamu merasa tertekan/di kekang gituuu mwehheehhe, ituu sajaa yg akuu pengen kasii taww ehehhehe"
+              </p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3 pt-2">
+            <button onclick="goToSlide(5)" class="py-2.5 px-4 rounded-xl border border-slate-300 bg-white/70 hover:bg-white text-slate-700 font-semibold text-xs sm:text-sm transition-all duration-200">
+              <i class="fa-solid fa-arrow-left mr-1"></i> Kembali
+            </button>
+            <button onclick="goToSlide(7)" class="py-2.5 px-4 rounded-xl border-2 border-teal-600 bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs sm:text-sm transition-all duration-200 shadow-sm flex items-center justify-center gap-2">
+              <span>Selanjutnya</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </section>
+
+        <!-- ================= SLIDE 7: PERJANJIAN ================= -->
+        <section id="slide7" class="slide-wrapper">
+          <div>
+            <div class="flex items-center gap-2 text-deepTeal font-bold mb-2 text-xs sm:text-sm">
+              <span class="w-6 h-6 rounded-full bg-pink-100 flex items-center justify-center text-xs">🤙</span>
+              <span>Perjanjian Manis Kita</span>
+            </div>
+
+            <div class="bg-white/60 p-3.5 sm:p-4 rounded-2xl border border-white/80 h-[200px] sm:h-[180px] overflow-y-auto inner-scroll text-slate-700 text-xs sm:text-sm leading-relaxed space-y-2 mb-3">
+              <p class="font-bold text-teal-800">
+                "Kitaa buwatt perjanjiann baruuu apakahh kamuu maw?
+              </p>
+              <p>
+                perjanjiannyaa yaituu jikaa kedepannyaaa kitaa menghadapi suatuu masalahh yang membuat kita kayak mungkin beradu argumenn (amiitt amitt jangan sampee) kitaa selesaikan masalahh ituu samaa samaaa okeeeyy?
+              </p>
+              <p>
+                kitaaa ngambekk boleehh tapii jangan keterusann atauu mencarii penggantiii, pastii kitaa tidakk bisaa kayakk langsung memaafkann jika salah satuu darii kitaa yang salaahh, jadiii kaloo kitaa lagii pengen butuh ruang/me time, jangan lupaaa untukk mengabarii yaaa. <span class="font-bold text-deepTeal">Janjiiiii???</span>"
+              </p>
+            </div>
+
+            <!-- Choices -->
+            <div class="space-y-2">
+              <button onclick="confirmPromise('Janjiiiii')" class="w-full py-2.5 px-4 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs sm:text-sm transition-all duration-200 flex items-center justify-center gap-2 shadow-sm active:scale-95">
+                <span>1. Janjiiiii 🤙</span>
+              </button>
+              <button onclick="confirmPromise('Insyaallah')" class="w-full py-2.5 px-4 rounded-xl bg-cyan-600 hover:bg-cyan-700 text-white font-bold text-xs sm:text-sm transition-all duration-200 flex items-center justify-center gap-2 shadow-sm active:scale-95">
+                <span>2. Insyaallah 🤲</span>
+              </button>
+              <button id="refusePromiseBtn" onclick="handleRefusePromise(event)" class="w-full py-2 px-4 rounded-xl border border-slate-300 bg-white/80 hover:bg-white text-slate-600 font-semibold text-xs sm:text-sm transition-all duration-150 active:scale-95">
+                3. tidak maw 😝
+              </button>
+            </div>
+          </div>
+
+          <div class="pt-2 text-center">
+            <button onclick="goToSlide(6)" class="text-xs text-slate-500 hover:text-slate-800 underline decoration-dotted transition-colors">
+              <i class="fa-solid fa-arrow-left mr-1"></i> Kembali ke teks sebelumnya
+            </button>
+          </div>
+        </section>
+
+        <!-- ================= SLIDE 8: FINAL CELEBRATION & 3RD POLAROID ================= -->
+        <section id="slide8" class="slide-wrapper">
+          <div class="my-auto flex flex-col justify-center items-center text-center px-1 overflow-y-auto inner-scroll max-h-[360px] py-1">
+            <div class="w-12 h-12 rounded-full bg-teal-100 flex items-center justify-center text-2xl mb-2 shadow-sm animate-bounce">
+              🎉✨
+            </div>
+
+            <h2 class="text-xs sm:text-sm font-bold text-deepTeal leading-relaxed px-1">
+              "YIIPPPPPPIIIIIII, TIMAAACIIII SUDAAA MEMBACAAA SAMPEEE AKHIRRR MWEHEHEH, i wish u thee besstttttttt, selaluuu semangaattt bekerjaaaa dann sehattt selaluuuuuuuu, <span class="text-teal-700 font-extrabold">see youuu 3 years laterrrr in real lifeee:3</span>"
+            </h2>
+
+            <!-- Aesthetic 3rd Polaroid Memory (image_1f4297.png) -->
+            <div class="mt-3 relative bg-white p-2.5 pb-3 rounded-md shadow-lg border border-slate-200/90 transform rotate-1 hover:rotate-0 hover:scale-105 transition-all duration-300 w-36 sm:w-44 select-none group">
+              <!-- Golden/Yellow pastel washi tape on top -->
+              <div class="absolute -top-2.5 left-1/2 -translate-x-1/2 w-14 h-4 bg-amber-200/75 backdrop-blur-sm rotate-1 rounded-sm border-t border-b border-white/60 shadow-sm pointer-events-none"></div>
+
+              <!-- Photo 3 Container -->
+              <div class="overflow-hidden rounded bg-slate-900 aspect-[3/4] relative shadow-inner">
+                <img 
+                  src="images/foto3.png" alt="Sabrina" class="w-full h-64 md:h-72 object-cover rounded-sm"
+                  alt="Sabrina" 
+                  class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-white/10 pointer-events-none"></div>
+              </div>
+
+              <!-- Polaroid Caption -->
+              <div class="pt-2 text-center">
+                <p class="font-script text-base sm:text-lg text-teal-900 font-bold leading-none tracking-wide">
+                  Sabrina 🩵
+                </p>
+                <p class="text-[9px] text-slate-500 font-mono mt-0.5 tracking-wider">My Favorite Person ✨</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3 pt-2">
+            <button onclick="goToSlide(0)" class="py-2.5 px-3 rounded-xl border border-slate-300 bg-white/70 hover:bg-white text-slate-700 font-semibold text-xs sm:text-sm transition-all flex items-center justify-center gap-1.5">
+              <i class="fa-solid fa-rotate-left"></i>
+              <span>Mulai Dari Awal</span>
+            </button>
+            <button onclick="launchLoveConfetti()" class="py-2.5 px-3 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs sm:text-sm shadow-md transition-all flex items-center justify-center gap-1.5">
+              <i class="fa-solid fa-heart"></i>
+              <span>Kembang Api Cinta 🩵</span>
+            </button>
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-3 text-center text-xs text-slate-600 font-medium">
+      Created with lots of love for <strong class="text-deepTeal">Sabrina Octariana (24)</strong> 💙
+    </footer>
+  </main>
+
+  <!-- Floating Toast Message Box -->
+  <div id="toastNotification" class="fixed bottom-5 left-1/2 -translate-x-1/2 bg-slate-900/90 backdrop-blur-md text-white px-4 py-2 rounded-full text-xs font-medium shadow-2xl opacity-0 pointer-events-none transition-all duration-300 z-50 flex items-center gap-2">
+    <span id="toastIcon">🩵</span>
+    <span id="toastText">Pesan</span>
+  </div>
+
+  <script>
+    // State management
+    let currentSlide = 0;
+    const totalSlides = 9; // 0 to 8
+    let runawayClickCount = 0;
+
+    // Toast function
+    function showToast(message, icon = '🩵') {
+      const toast = document.getElementById('toastNotification');
+      const toastText = document.getElementById('toastText');
+      const toastIcon = document.getElementById('toastIcon');
+
+      toastText.innerText = message;
+      toastIcon.innerText = icon;
+      toast.classList.remove('opacity-0', 'pointer-events-none');
+      toast.classList.add('opacity-100');
+
+      setTimeout(() => {
+        toast.classList.remove('opacity-100');
+        toast.classList.add('opacity-0', 'pointer-events-none');
+      }, 2500);
+    }
+
+    // ================= OFFICIAL YOUTUBE IFRAME CONTROLLER =================
+    // Strictly Backstreet Boys - Shape Of My Heart ('OT5msu-dap8')
+    let ytPlayer = null;
+    let isYtReady = false;
+    let isPlaying = false;
+
+    // Load official YouTube IFrame API script
+    const ytScript = document.createElement('script');
+    ytScript.src = "https://www.youtube.com/iframe_api";
+    const headTag = document.getElementsByTagName('script')[0];
+    headTag.parentNode.insertBefore(ytScript, headTag);
+
+    function onYouTubeIframeAPIReady() {
+      ytPlayer = new YT.Player('ytFrame', {
+        height: '200',
+        width: '200',
+        videoId: 'OT5msu-dap8', // Exact official video requested
+        playerVars: {
+          autoplay: 0,
+          loop: 1,
+          playlist: 'OT5msu-dap8',
+          controls: 0,
+          showinfo: 0,
+          modestbranding: 1,
+          rel: 0
+        },
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange,
+          'onError': onPlayerError
+        }
+      });
+    }
+
+    function onPlayerReady(event) {
+      isYtReady = true;
+      try {
+        ytPlayer.unMute();
+        ytPlayer.setVolume(100);
+      } catch (e) {}
+    }
+
+    function onPlayerStateChange(event) {
+      if (event.data === YT.PlayerState.PLAYING) {
+        setMusicUIState(true);
+      } else if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED) {
+        setMusicUIState(false);
+      }
+    }
+
+    function onPlayerError(e) {
+      console.warn("YouTube iframe error code:", e.data);
+      showToast("Klik tombol YouTube di atas jika pemutar dibatasi oleh jaringan", "⚠");
+    }
+
+    function setMusicUIState(playing) {
+      isPlaying = playing;
+      const vinyl = document.getElementById('vinylIcon');
+      const icon = document.getElementById('playStateIcon');
+      const statusText = document.getElementById('musicStatusText');
+
+      if (playing) {
+        vinyl.classList.add('vinyl-spinning');
+        icon.className = "fa-solid fa-pause text-xs text-teal-600 ml-1";
+        statusText.innerText = "Shape Of My Heart 🎶";
+      } else {
+        vinyl.classList.remove('vinyl-spinning');
+        icon.className = "fa-solid fa-play text-xs text-teal-600 ml-1";
+        statusText.innerText = "Putar Lagu 🎵";
+      }
+    }
+
+    function playOfficialMusic() {
+      if (isYtReady && ytPlayer && typeof ytPlayer.playVideo === 'function') {
+        try {
+          ytPlayer.unMute();
+          ytPlayer.setVolume(100);
+          ytPlayer.playVideo();
+          setMusicUIState(true);
+          showToast("Memutar Backstreet Boys - Shape Of My Heart 🎶", "🎵");
+        } catch (err) {
+          console.error("Playback error:", err);
+        }
+      }
+    }
+
+    function pauseOfficialMusic() {
+      if (isYtReady && ytPlayer && typeof ytPlayer.pauseVideo === 'function') {
+        try {
+          ytPlayer.pauseVideo();
+          setMusicUIState(false);
+          showToast("Musik dijeda");
+        } catch (err) {}
+      }
+    }
+
+    function toggleOfficialMusic() {
+      if (isPlaying) {
+        pauseOfficialMusic();
+      } else {
+        playOfficialMusic();
+      }
+    }
+
+    // ================= SLIDE NAVIGATION & LOCKED VIEWPORT =================
+    function renderStepIndicators() {
+      const container = document.getElementById('stepDotsContainer');
+      container.innerHTML = '';
+      for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement('div');
+        dot.className = `h-1.5 rounded-full transition-all duration-300 ${
+          i === currentSlide ? 'w-6 bg-teal-600' : 'w-2 bg-slate-300'
+        }`;
+        container.appendChild(dot);
+      }
+    }
+
+    function goToSlide(targetSlide) {
+      if (targetSlide < 0 || targetSlide >= totalSlides) return;
+
+      if (!isPlaying && isYtReady) {
+        playOfficialMusic();
+      }
+
+      const activeEl = document.getElementById(`slide${currentSlide}`);
+      const nextEl = document.getElementById(`slide${targetSlide}`);
+
+      if (activeEl) activeEl.classList.remove('active');
+      currentSlide = targetSlide;
+      renderStepIndicators();
+
+      if (nextEl) nextEl.classList.add('active');
+
+      if (targetSlide === 0) {
+        runSlide0Animation();
+      } else if (targetSlide === 4 || targetSlide === 8) {
+        launchLoveConfetti();
+      }
+    }
+
+    // Slide 0 entrance animation
+    function runSlide0Animation() {
+      const title = document.getElementById('slide0BigTitle');
+      const subBox = document.getElementById('slide0SubtitleBox');
+      const btn = document.getElementById('slide0BtnWrapper');
+
+      title.classList.remove('-translate-y-2');
+      subBox.classList.remove('opacity-100', 'translate-y-0', 'max-h-[300px]');
+      subBox.classList.add('opacity-0', 'translate-y-4', 'max-h-0');
+      btn.classList.remove('opacity-100');
+      btn.classList.add('opacity-0');
+
+      setTimeout(() => {
+        title.classList.add('-translate-y-2');
+        subBox.classList.remove('opacity-0', 'translate-y-4', 'max-h-0');
+        subBox.classList.add('opacity-100', 'translate-y-0', 'max-h-[300px]');
+
+        setTimeout(() => {
+          btn.classList.remove('opacity-0');
+          btn.classList.add('opacity-100');
+        }, 350);
+      }, 700);
+    }
+
+    // ================= RUNAWAY BUTTON (CLICK-ONLY DODGE) =================
+    function dodgeGamaukClick(e) {
+      if (e) e.stopPropagation();
+      const btn = document.getElementById('runawayBtn');
+      runawayClickCount++;
+
+      const runawayTexts = [
+        "gamauk wlee 😜",
+        "gabisa diklik wlee 😝",
+        "pencet MAU ajaa yaa 🩵",
+        "eits meleset lagi! 🏃💨",
+        "harus mauu pokoknyaa :P",
+        "pencet MAUU dongg Sabrina ❤️"
+      ];
+
+      btn.innerText = runawayTexts[runawayClickCount % runawayTexts.length];
+
+      const moveX = (Math.random() - 0.5) * 220;
+      const moveY = (Math.random() - 0.5) * 120;
+
+      btn.style.transform = `translate(${moveX}px, ${moveY}px)`;
+      showToast("Eits gabisa nolak wleee 😜", "😝");
+    }
+
+    function handleAcceptProposal() {
+      launchLoveConfetti();
+      showToast("YAYYYYY!! DITERIMA!! 🩵🥳", "🎉");
+      goToSlide(4);
+    }
+
+    function chooseRelationship(type) {
+      showToast(`Pilihan kamu: "${type}" dicatat yaa! 🩵`, "🤝");
+      setTimeout(() => {
+        goToSlide(6);
+      }, 700);
+    }
+
+    function confirmPromise(choice) {
+      showToast(`Alhamdulillah, makasih udah mau berjanji: "${choice}" ✨`, "🤙");
+      setTimeout(() => {
+        goToSlide(8);
+      }, 700);
+    }
+
+    function handleRefusePromise(e) {
+      if (e) e.preventDefault();
+      showToast("Eits gaboleh nolak yaa, harus Janji atau Insyaallah! 😜", "😝");
+      const btn = document.getElementById('refusePromiseBtn');
+      const offset = (Math.random() > 0.5 ? 1 : -1) * 35;
+      btn.style.transform = `translateX(${offset}px)`;
+      setTimeout(() => {
+        btn.style.transform = `translateX(0px)`;
+      }, 250);
+    }
+
+    // ================= INTERACTIVE CURSOR LOVE TRAIL PARTICLES =================
+    const loveSymbols = ['🩵', '💙', '🤍', '✨', '💖'];
+    let lastParticleTime = 0;
+
+    function spawnLoveParticle(clientX, clientY) {
+      const particle = document.createElement('div');
+      particle.className = 'cursor-love-particle';
+      particle.innerHTML = loveSymbols[Math.floor(Math.random() * loveSymbols.length)];
+      
+      const size = Math.floor(Math.random() * 12) + 14;
+      particle.style.fontSize = `${size}px`;
+      particle.style.left = `${clientX}px`;
+      particle.style.top = `${clientY}px`;
+
+      const rx = (Math.random() - 0.5) * 60 + 'px';
+      const rx2 = (Math.random() - 0.5) * 140 + 'px';
+      const rot = (Math.random() - 0.5) * 40 + 'deg';
+      const rot2 = (Math.random() - 0.5) * 90 + 'deg';
+
+      particle.style.setProperty('--rx', rx);
+      particle.style.setProperty('--rx2', rx2);
+      particle.style.setProperty('--rot', rot);
+      particle.style.setProperty('--rot2', rot2);
+
+      document.body.appendChild(particle);
+
+      setTimeout(() => {
+        particle.remove();
+      }, 1300);
+    }
+
+    window.addEventListener('mousemove', (e) => {
+      const now = performance.now();
+      if (now - lastParticleTime > 40) {
+        spawnLoveParticle(e.clientX, e.clientY);
+        lastParticleTime = now;
+      }
+    });
+
+    window.addEventListener('touchmove', (e) => {
+      if (e.touches && e.touches.length > 0) {
+        const touch = e.touches[0];
+        const now = performance.now();
+        if (now - lastParticleTime > 45) {
+          spawnLoveParticle(touch.clientX, touch.clientY);
+          lastParticleTime = now;
+        }
+      }
+    }, { passive: true });
+
+    // ================= FALLING WHITE FLOWER PETALS (GERIMIS BUNGA PUTIH) =================
+    const canvas = document.getElementById('petalCanvas');
+    const ctx = canvas.getContext('2d');
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+
+    window.addEventListener('resize', () => {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+    });
+
+    const totalPetals = 30;
+    const petals = [];
+
+    class FlowerPetal {
+      constructor() {
+        this.reset(true);
+      }
+
+      reset(init = false) {
+        this.x = Math.random() * width;
+        this.y = init ? Math.random() * height : -25;
+        this.size = Math.random() * 8 + 7;
+        this.speedY = Math.random() * 0.8 + 0.6;
+        this.speedX = (Math.random() - 0.3) * 0.6;
+        this.angle = Math.random() * Math.PI * 2;
+        this.angularSpeed = (Math.random() - 0.5) * 0.02;
+        this.opacity = Math.random() * 0.45 + 0.45;
+        this.aspectRatio = Math.random() * 0.4 + 0.6;
+      }
+
+      update() {
+        this.y += this.speedY;
+        this.x += this.speedX + Math.sin(this.angle) * 0.35;
+        this.angle += this.angularSpeed;
+
+        if (this.y > height + 25 || this.x < -30 || this.x > width + 30) {
+          this.reset(false);
+        }
+      }
+
+      draw() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.angle);
+        ctx.scale(1, this.aspectRatio);
+
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.bezierCurveTo(-this.size, -this.size / 2, -this.size / 2, -this.size, 0, -this.size * 1.3);
+        ctx.bezierCurveTo(this.size / 2, -this.size, this.size, -this.size / 2, 0, 0);
+
+        ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+        ctx.shadowColor = 'rgba(200, 223, 219, 0.5)';
+        ctx.shadowBlur = 5;
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    for (let i = 0; i < totalPetals; i++) {
+      petals.push(new FlowerPetal());
+    }
+
+    function animatePetals() {
+      ctx.clearRect(0, 0, width, height);
+      for (let i = 0; i < petals.length; i++) {
+        petals[i].update();
+        petals[i].draw();
+      }
+      requestAnimationFrame(animatePetals);
+    }
+    requestAnimationFrame(animatePetals);
+
+    // ================= CONFETTI SPRAY =================
+    function launchLoveConfetti() {
+      if (typeof confetti === 'function') {
+        const count = 180;
+        const defaults = {
+          origin: { y: 0.65 },
+          colors: ['#C8DFDB', '#8ec5d6', '#b8dfd8', '#ffffff', '#ff94b9', '#4d908e']
+        };
+
+        confetti({
+          ...defaults,
+          particleCount: Math.floor(count * 0.4),
+          spread: 60,
+        });
+        confetti({
+          ...defaults,
+          particleCount: Math.floor(count * 0.35),
+          spread: 100,
+          scalar: 1.15
+        });
+        confetti({
+          ...defaults,
+          particleCount: Math.floor(count * 0.25),
+          spread: 130,
+          decay: 0.92,
+          scalar: 1.25
+        });
+      }
+    }
+
+    // ================= INITIALIZATION & AUTOPLAY POLICY UNLOCK =================
+    window.onload = function() {
+      renderStepIndicators();
+      runSlide0Animation();
+
+      const unlockAudioHandler = function() {
+        if (!isPlaying && isYtReady) {
+          playOfficialMusic();
+        }
+        document.body.removeEventListener('click', unlockAudioHandler);
+        document.body.removeEventListener('touchstart', unlockAudioHandler);
+      };
+
+      document.body.addEventListener('click', unlockAudioHandler, { once: true });
+      document.body.addEventListener('touchstart', unlockAudioHandler, { once: true });
+    };
+  </script>
+</body>
+</html>
