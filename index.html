@@ -22,12 +22,12 @@
         extend: {
           colors: {
             customBase: '#C8DFDB',
-            softIceBlue: '#dff2f0',
-            powderBlue: '#dbeafe',
             skyLight: '#bae6fd',
-            oceanMid: '#0284c7',
-            deepNavy: '#1e3a5f',
-            borderGlow: 'rgba(255, 255, 255, 0.9)'
+            skyVibrant: '#38bdf8',
+            skyDeep: '#0284c7',
+            deepNavy: '#0f2744',
+            pureSky: '#7dd3fc',
+            softBlueBg: '#dbeafe'
           },
           fontFamily: {
             sans: ['Quicksand', 'sans-serif'],
@@ -46,19 +46,19 @@
       box-sizing: border-box;
     }
 
-    /* Soft Blue palette with dynamic subtle fluid motion */
+    /* Vibrant, Bright Sky-Blue Gradient Flow (No green tones) */
     body {
-      background: linear-gradient(135deg, #d8eeeb, #C8DFDB, #bfe2dc, #cbe8e4, #d5edf2, #b8e0db);
+      background: linear-gradient(135deg, #b9e3fc, #A5D8F3, #C8DFDB, #BCE4FA, #90CDF4, #70C5F7, #cfeafb);
       background-size: 350% 350%;
-      animation: smoothBlueFlow 16s ease infinite;
+      animation: vibrantBlueFlow 14s ease infinite;
       font-family: 'Quicksand', sans-serif;
-      color: #1e3a5f;
+      color: #0f2744;
       overflow: hidden;
       margin: 0;
       padding: 0;
     }
 
-    @keyframes smoothBlueFlow {
+    @keyframes vibrantBlueFlow {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
@@ -68,16 +68,16 @@
     .drifting-blue-orb {
       position: fixed;
       border-radius: 50%;
-      filter: blur(85px);
+      filter: blur(80px);
       pointer-events: none;
       z-index: 1;
-      opacity: 0.6;
-      animation: driftFloat 18s ease-in-out infinite alternate;
+      opacity: 0.65;
+      animation: driftFloat 16s ease-in-out infinite alternate;
     }
 
     @keyframes driftFloat {
       0% { transform: translate(0px, 0px) scale(1); }
-      50% { transform: translate(45px, -40px) scale(1.15); }
+      50% { transform: translate(45px, -35px) scale(1.15); }
       100% { transform: translate(-35px, 40px) scale(0.95); }
     }
 
@@ -91,13 +91,13 @@
       z-index: 2;
     }
 
-    /* Glassmorphic Central Card with Blue Aesthetic */
+    /* Glassmorphic Central Card with Pure Blue Aesthetics */
     .main-glass-card {
-      background: rgba(255, 255, 255, 0.88);
+      background: rgba(255, 255, 255, 0.90);
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
-      border: 1.5px solid rgba(255, 255, 255, 0.95);
-      box-shadow: 0 20px 45px rgba(30, 58, 95, 0.1), 0 4px 15px rgba(200, 223, 219, 0.4);
+      border: 2px solid rgba(255, 255, 255, 0.95);
+      box-shadow: 0 20px 45px rgba(15, 39, 68, 0.12), 0 6px 20px rgba(56, 189, 248, 0.25);
     }
 
     /* Floating Heart Trail Particle */
@@ -124,7 +124,7 @@
       }
     }
 
-    /* Fixed Viewport Slides (Prevents Jumping Downwards) */
+    /* Fixed Viewport Slides (Locked Dimensions) */
     .slide-wrapper {
       position: absolute;
       inset: 0;
@@ -143,12 +143,12 @@
       transform: scale(1);
     }
 
-    /* Inner Custom Scrollbar */
+    /* Inner Custom Scrollbar in Sky Blue */
     .inner-scroll::-webkit-scrollbar {
       width: 5px;
     }
     .inner-scroll::-webkit-scrollbar-thumb {
-      background: #a9cfc8;
+      background: #7dd3fc;
       border-radius: 999px;
     }
     .inner-scroll::-webkit-scrollbar-track {
@@ -165,12 +165,13 @@
   </style>
 </head>
 
+
 <body class="relative min-h-screen h-screen flex flex-col justify-between items-center p-3 sm:p-5 select-none">
 
-  <!-- Ambient Blue Pastel Drift Glows -->
-  <div class="drifting-blue-orb w-80 h-80 bg-[#bce3dc] -top-20 -left-20"></div>
-  <div class="drifting-blue-orb w-96 h-96 bg-[#c5e6f5] -bottom-24 -right-20" style="animation-delay: -5s;"></div>
-  <div class="drifting-blue-orb w-72 h-72 bg-[#d7f0ed] top-1/3 left-1/3" style="animation-delay: -10s;"></div>
+  <!-- Ambient Bright Blue Pastel Drift Glows -->
+  <div class="drifting-blue-orb w-80 h-80 bg-[#7dd3fc] -top-20 -left-20"></div>
+  <div class="drifting-blue-orb w-96 h-96 bg-[#93c5fd] -bottom-24 -right-20" style="animation-delay: -5s;"></div>
+  <div class="drifting-blue-orb w-72 h-72 bg-[#bae6fd] top-1/3 left-1/3" style="animation-delay: -10s;"></div>
 
   <!-- Petals Canvas -->
   <canvas id="petalCanvas"></canvas>
@@ -182,25 +183,25 @@
 
   <!-- Header with Sabrina Badge & Music Controller -->
   <header class="w-full max-w-xl z-30 flex justify-between items-center py-1">
-    <div class="flex items-center gap-2 text-deepNavy font-semibold text-xs sm:text-sm bg-white/85 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white shadow-sm">
+    <div class="flex items-center gap-2 text-deepNavy font-semibold text-xs sm:text-sm bg-white/90 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-sky-100 shadow-sm">
       <span class="inline-block w-2.5 h-2.5 rounded-full bg-sky-500 animate-ping"></span>
       <span class="font-bold tracking-wide text-sky-900">Sabrina Octariana 🩵</span>
     </div>
 
     <!-- Official YouTube Music Controller Widget -->
     <div class="flex items-center gap-2">
-      <button id="musicToggleBtn" onclick="toggleOfficialMusic()" class="flex items-center gap-2 bg-white/90 backdrop-blur-md hover:bg-white text-deepNavy px-3.5 py-1.5 rounded-full border border-white shadow-sm transition-all duration-300 active:scale-95 group">
-        <div id="vinylIcon" class="w-6 h-6 rounded-full bg-sky-100 flex items-center justify-center text-sky-700 transition-transform">
+      <button id="musicToggleBtn" onclick="toggleOfficialMusic()" class="flex items-center gap-2 bg-white/95 backdrop-blur-md hover:bg-white text-deepNavy px-3.5 py-1.5 rounded-full border border-sky-200 shadow-sm transition-all duration-300 active:scale-95 group">
+        <div id="vinylIcon" class="w-6 h-6 rounded-full bg-sky-100 flex items-center justify-center text-sky-600 transition-transform">
           <i class="fa-solid fa-compact-disc text-sm"></i>
         </div>
         <div class="text-left text-xs leading-tight pr-1">
           <p class="font-bold text-sky-950" id="musicStatusText">Putar Lagu 🎵</p>
-          <p class="text-[10px] text-slate-500 truncate max-w-[130px]">Shape Of My Heart</p>
+          <p class="text-[10px] text-sky-700 truncate max-w-[130px]">Shape Of My Heart</p>
         </div>
         <i id="playStateIcon" class="fa-solid fa-play text-xs text-sky-600 ml-1"></i>
       </button>
 
-      <a href="https://youtu.be/OT5msu-dap8" target="_blank" rel="noopener noreferrer" title="Buka lagu langsung di YouTube" class="w-8 h-8 rounded-full bg-white/85 backdrop-blur-md hover:bg-red-50 text-red-500 flex items-center justify-center border border-white shadow-sm transition-all text-xs">
+      <a href="https://youtu.be/OT5msu-dap8" target="_blank" rel="noopener noreferrer" title="Buka lagu langsung di YouTube" class="w-8 h-8 rounded-full bg-white/90 backdrop-blur-md hover:bg-red-50 text-red-500 flex items-center justify-center border border-sky-100 shadow-sm transition-all text-xs">
         <i class="fa-brands fa-youtube"></i>
       </a>
     </div>
@@ -208,11 +209,11 @@
 
   <!-- Locked-Dimension Main Card -->
   <main class="w-full max-w-xl z-20 my-auto flex flex-col items-center">
-    <div class="main-glass-card w-full rounded-3xl p-5 sm:p-7 relative transition-all duration-300 overflow-hidden h-[545px] sm:h-[510px] flex flex-col justify-between">
+    <div class="main-glass-card w-full rounded-3xl p-5 sm:p-7 relative transition-all duration-300 overflow-hidden h-[545px] sm:h-[515px] flex flex-col justify-between">
 
       <!-- Step Indicator Dots -->
-      <div class="flex justify-center items-center gap-1.5 mb-2 z-10" id="stepDotsContainer">
-        <!-- Dots rendered via JS -->
+      <div class="flex justify-center items-center gap-1 mb-2 z-10" id="stepDotsContainer">
+        <!-- 11 Dots rendered via JS -->
       </div>
 
       <!-- Viewport Card Inner Container -->
@@ -221,22 +222,22 @@
         <!-- ================= SLIDE 0: INTRO ================= -->
         <section id="slide0" class="slide-wrapper active items-center text-center justify-center px-2">
           <div class="my-auto flex flex-col items-center w-full">
-            <div class="w-16 h-16 rounded-full bg-sky-100 text-sky-700 flex items-center justify-center mb-3 text-2xl shadow-inner animate-bounce">
+            <div class="w-16 h-16 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center mb-3 text-2xl shadow-inner animate-bounce border border-sky-200">
               🎂
             </div>
             
-            <h1 id="slide0BigTitle" class="text-2xl sm:text-3xl font-extrabold text-deepNavy tracking-wide transition-all duration-700 transform translate-y-0">
+            <h1 id="slide0BigTitle" class="text-2xl sm:text-3xl font-extrabold text-sky-950 tracking-wide transition-all duration-700 transform translate-y-0">
               SELAMAATT ULANGG TAHUUNNN!!
             </h1>
 
             <div id="slide0SubtitleBox" class="mt-4 transition-all duration-700 opacity-0 translate-y-4 max-h-0 overflow-hidden w-full">
-              <p class="text-xs sm:text-sm text-slate-700 font-medium leading-relaxed bg-white/70 p-4 rounded-2xl border border-sky-100 shadow-sm">
+              <p class="text-xs sm:text-sm text-sky-950 font-medium leading-relaxed bg-sky-50/80 p-4 rounded-2xl border border-sky-200 shadow-sm">
                 "selamaatt ulangg tahunn sabrinaa octarianaa yang ke 24!!! semogaaa kamuuu diberiiii kesehatann selaluuu biarr semakinnn goqilllll mwheheheh, semogaaa kamuu diberiii rezekiii jugaaa yang sangat melimpaahh sekaliii sampee satuu rumahh penuh uwang AHAHAHHA"
               </p>
             </div>
 
             <div id="slide0BtnWrapper" class="mt-5 w-full opacity-0 transition-all duration-500">
-              <button onclick="goToSlide(1)" class="w-full py-3 px-6 rounded-2xl border-2 border-sky-600 bg-white/90 hover:bg-sky-600 hover:text-white text-sky-900 font-bold text-sm sm:text-base transition-all duration-300 shadow-md flex items-center justify-center gap-2 group">
+              <button onclick="goToSlide(1)" class="w-full py-3 px-6 rounded-2xl border-2 border-sky-500 bg-white/95 hover:bg-sky-500 hover:text-white text-sky-900 font-bold text-sm sm:text-base transition-all duration-300 shadow-md flex items-center justify-center gap-2 group">
                 <span>Selanjutnya</span>
                 <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
               </button>
@@ -247,17 +248,17 @@
         <!-- ================= SLIDE 1: 5 BULAN ================= -->
         <section id="slide1" class="slide-wrapper">
           <div>
-            <div class="flex items-center gap-2 text-deepNavy font-bold mb-2 text-xs sm:text-sm">
+            <div class="flex items-center gap-2 text-sky-950 font-bold mb-2 text-xs sm:text-sm">
               <span class="w-6 h-6 rounded-full bg-sky-100 text-sky-700 flex items-center justify-center text-xs">💬</span>
               <span>Dari lubuk hatiku yang paling tulus</span>
             </div>
 
-            <div class="bg-white/70 p-4 sm:p-5 rounded-2xl border border-sky-100 h-[340px] sm:h-[310px] overflow-y-auto inner-scroll text-slate-700 text-xs sm:text-sm leading-relaxed space-y-3">
+            <div class="bg-sky-50/70 p-4 sm:p-5 rounded-2xl border border-sky-200 h-[340px] sm:h-[310px] overflow-y-auto inner-scroll text-slate-700 text-xs sm:text-sm leading-relaxed space-y-3">
               <p class="font-bold text-sky-950">
                 "disiniiii, akuu mww bilangg sesuatuuu
               </p>
               <p>
-                setelahh kitaaa menjalinn pertemanann dekattt selamaa kurang lebih 5 bulannn, akuu merasaa bahwaaa kamuu benarr benaarr istimewaaa sertaaa langkaa sekalii, <span class="font-bold text-sky-800">SANGATT SANGAATTT LANGKAAAA SEKALII veryy veryyy ultra raree</span>, kenapaa akuu bilang begitu??
+                setelahh kitaaa menjalinn pertemanann dekattt selamaa kurang lebih 5 bulannn, akuu merasaa bahwaaa kamuu benarr benaarr istimewaaa sertaaa langkaa sekalii, <span class="font-bold text-sky-700">SANGATT SANGAATTT LANGKAAAA SEKALII veryy veryyy ultra raree</span>, kenapaa akuu bilang begitu??
               </p>
               <p>
                 yaa karenaa kamuu tuu wanitaa dengann seribuuu kelebihan, jujurrr sebelum kitaa kenal dekett, akuu sangatt mengagumiii kamuuu, mulaii darii caraa bicaraa kamuu yang lucuuu sertaa absurd/unikkk, kebiasaan yang bikinn akuu ngikutinn ituu, contohh kamuu kan sering belii kopyy, bobo kesiangan (jass kiding), cara bicaraa kamuu, dan lain sebagainyaaa."
@@ -266,10 +267,10 @@
           </div>
 
           <div class="grid grid-cols-2 gap-3 pt-2">
-            <button onclick="goToSlide(0)" class="py-2.5 px-4 rounded-xl border border-slate-300 bg-white/80 hover:bg-white text-slate-700 font-semibold text-xs sm:text-sm transition-all duration-200">
+            <button onclick="goToSlide(0)" class="py-2.5 px-4 rounded-xl border border-sky-200 bg-white/90 hover:bg-white text-sky-900 font-semibold text-xs sm:text-sm transition-all duration-200">
               <i class="fa-solid fa-arrow-left mr-1"></i> Kembali
             </button>
-            <button onclick="goToSlide(2)" class="py-2.5 px-4 rounded-xl border-2 border-sky-600 bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs sm:text-sm transition-all duration-200 shadow-sm flex items-center justify-center gap-2">
+            <button onclick="goToSlide(2)" class="py-2.5 px-4 rounded-xl border-2 border-sky-500 bg-sky-500 hover:bg-sky-600 text-white font-bold text-xs sm:text-sm transition-all duration-200 shadow-sm flex items-center justify-center gap-2">
               <span>Selanjutnya</span>
               <i class="fa-solid fa-arrow-right"></i>
             </button>
@@ -279,18 +280,18 @@
         <!-- ================= SLIDE 2: DOUBLE POLAROID ================= -->
         <section id="slide2" class="slide-wrapper">
           <div>
-            <div class="flex items-center gap-2 text-deepNavy font-bold mb-2 text-xs sm:text-sm">
+            <div class="flex items-center gap-2 text-sky-950 font-bold mb-2 text-xs sm:text-sm">
               <span class="w-6 h-6 rounded-full bg-sky-100 text-sky-700 flex items-center justify-center text-xs">✨</span>
               <span>The most gorgeous girl I've ever met</span>
             </div>
 
-            <div class="bg-white/70 p-4 sm:p-5 rounded-2xl border border-sky-100 h-[340px] sm:h-[310px] overflow-y-auto inner-scroll text-slate-700 text-xs sm:text-sm leading-relaxed space-y-4">
+            <div class="bg-sky-50/70 p-4 sm:p-5 rounded-2xl border border-sky-200 h-[340px] sm:h-[310px] overflow-y-auto inner-scroll text-slate-700 text-xs sm:text-sm leading-relaxed space-y-4">
               
               <!-- Double Polaroid Scrapbook -->
               <div class="flex flex-wrap sm:flex-nowrap justify-center items-center gap-4 py-2 my-1">
                 <!-- Polaroid 1 -->
-                <div class="relative bg-white p-2.5 pb-3 rounded-md shadow-lg border border-slate-200 transform -rotate-3 hover:rotate-0 hover:scale-105 hover:z-20 transition-all duration-300 w-36 sm:w-44 select-none group">
-                  <div class="absolute -top-2.5 left-1/2 -translate-x-1/2 w-14 h-4 bg-sky-200/80 backdrop-blur-sm -rotate-2 rounded-sm border-t border-b border-white/60 shadow-sm pointer-events-none"></div>
+                <div class="relative bg-white p-2.5 pb-3 rounded-md shadow-lg border border-sky-100 transform -rotate-3 hover:rotate-0 hover:scale-105 hover:z-20 transition-all duration-300 w-36 sm:w-44 select-none group">
+                  <div class="absolute -top-2.5 left-1/2 -translate-x-1/2 w-14 h-4 bg-sky-200/90 backdrop-blur-sm -rotate-2 rounded-sm border-t border-b border-white shadow-sm pointer-events-none"></div>
                   
                   <div class="overflow-hidden rounded bg-slate-900 aspect-[3/4] relative shadow-inner">
                     <img 
@@ -300,20 +301,20 @@
                       class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                       loading="lazy"
                     />
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-white/10 pointer-events-none"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-sky-950/30 via-transparent to-white/10 pointer-events-none"></div>
                   </div>
 
                   <div class="pt-2 text-center">
                     <p class="font-script text-base sm:text-lg text-sky-950 font-bold leading-none tracking-wide">
                       Sabrina ✨
                     </p>
-                    <p class="text-[9px] text-slate-500 font-mono mt-0.5 tracking-wider">the most gorgeous girl</p>
+                    <p class="text-[9px] text-sky-700 font-mono mt-0.5 tracking-wider">the most gorgeous girl</p>
                   </div>
                 </div>
 
                 <!-- Polaroid 2 -->
-                <div class="relative bg-white p-2.5 pb-3 rounded-md shadow-lg border border-slate-200 transform rotate-3 hover:rotate-0 hover:scale-105 hover:z-20 transition-all duration-300 w-36 sm:w-44 select-none group">
-                  <div class="absolute -top-2.5 left-1/2 -translate-x-1/2 w-14 h-4 bg-blue-200/80 backdrop-blur-sm rotate-2 rounded-sm border-t border-b border-white/60 shadow-sm pointer-events-none"></div>
+                <div class="relative bg-white p-2.5 pb-3 rounded-md shadow-lg border border-sky-100 transform rotate-3 hover:rotate-0 hover:scale-105 hover:z-20 transition-all duration-300 w-36 sm:w-44 select-none group">
+                  <div class="absolute -top-2.5 left-1/2 -translate-x-1/2 w-14 h-4 bg-sky-200/90 backdrop-blur-sm rotate-2 rounded-sm border-t border-b border-white shadow-sm pointer-events-none"></div>
                   
                   <div class="overflow-hidden rounded bg-slate-900 aspect-[3/4] relative shadow-inner">
                     <img 
@@ -323,20 +324,20 @@
                       class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                       loading="lazy"
                     />
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-white/10 pointer-events-none"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-sky-950/30 via-transparent to-white/10 pointer-events-none"></div>
                   </div>
 
                   <div class="pt-2 text-center">
                     <p class="font-script text-base sm:text-lg text-sky-950 font-bold leading-none tracking-wide">
                       Cutest smile 🌸
                     </p>
-                    <p class="text-[9px] text-slate-500 font-mono mt-0.5 tracking-wider">she melts my heart</p>
+                    <p class="text-[9px] text-sky-700 font-mono mt-0.5 tracking-wider">she melts my heart</p>
                   </div>
                 </div>
               </div>
 
               <p>
-                "aku jugaa sangat sangat sangaaattt mengagumi seberapaa cantikkk kamuuu, kayak <span class="font-bold text-sky-900">WHAATT, SHE IS THE MOST GORGEOUS GIRL I'VE EVER MET</span>, tidaaa cumaa ituu, kitaaa memiliki seleraa yang samaaa, yang membuat dirikuu menjadii luluhh seketikaa, sepertiii seleraaa musikk kitaa, rasa minuman yang kita sukaa, serta warna favorit, warna favorit kamuu biru muda kan??
+                "aku jugaa sangat sangat sangaaattt mengagumi seberapaa cantikkk kamuuu, kayak <span class="font-bold text-sky-700">WHAATT, SHE IS THE MOST GORGEOUS GIRL I'VE EVER MET</span>, tidaaa cumaa ituu, kitaaa memiliki seleraa yang samaaa, yang membuat dirikuu menjadii luluhh seketikaa, sepertiii seleraaa musikk kitaa, rasa minuman yang kita sukaa, serta warna favorit, warna favorit kamuu biru muda kan??
               </p>
               <p>
                 jujur samaaaa, warna biruu mudaa tuu warna favoritkuu yang pertamaa kalii nyaa, ituu alasann akuu pakee skin Minecraft kombinasi warna dominan biru putih:v, memilikii seleraa gamingg jugaaaa, dannn kitaa samaa samaaa tidaa keluarr rumahh selagii tidaa ada yang mengajak:V AHAHHAHAHAH,
@@ -348,10 +349,10 @@
           </div>
 
           <div class="grid grid-cols-2 gap-3 pt-2">
-            <button onclick="goToSlide(1)" class="py-2.5 px-4 rounded-xl border border-slate-300 bg-white/80 hover:bg-white text-slate-700 font-semibold text-xs sm:text-sm transition-all duration-200">
+            <button onclick="goToSlide(1)" class="py-2.5 px-4 rounded-xl border border-sky-200 bg-white/90 hover:bg-white text-sky-900 font-semibold text-xs sm:text-sm transition-all duration-200">
               <i class="fa-solid fa-arrow-left mr-1"></i> Kembali
             </button>
-            <button onclick="goToSlide(3)" class="py-2.5 px-4 rounded-xl border-2 border-sky-600 bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs sm:text-sm transition-all duration-200 shadow-sm flex items-center justify-center gap-2">
+            <button onclick="goToSlide(3)" class="py-2.5 px-4 rounded-xl border-2 border-sky-500 bg-sky-500 hover:bg-sky-600 text-white font-bold text-xs sm:text-sm transition-all duration-200 shadow-sm flex items-center justify-center gap-2">
               <span>Selanjutnya</span>
               <i class="fa-solid fa-arrow-right"></i>
             </button>
@@ -361,14 +362,14 @@
         <!-- ================= SLIDE 3: PERNYATAAN CINTA & RUNAWAY BUTTON ================= -->
         <section id="slide3" class="slide-wrapper">
           <div class="my-auto text-center px-1">
-            <div class="inline-block p-3 rounded-full bg-rose-100 text-rose-500 mb-3 animate-pulse">
+            <div class="inline-block p-3 rounded-full bg-sky-100 text-sky-600 mb-3 animate-pulse border border-sky-200">
               <i class="fa-solid fa-heart text-2xl"></i>
             </div>
 
             <h2 class="text-sm sm:text-base font-bold text-deepNavy leading-relaxed">
-              "akuu jujurrr, aku suka samaa kamuuu, im really reallyy like u, <span class="text-rose-600 font-extrabold">NOT JUST LIKE, BUT IM REALLY REALLY LOVEE YOUU SOOO MUCH</span>, jadiii, will youu be my girlfriend from now andd foroverrr???"
+              "akuu jujurrr, aku suka samaa kamuuu, im really reallyy like u, <span class="text-rose-500 font-extrabold">NOT JUST LIKE, BUT IM REALLY REALLY LOVEE YOUU SOOO MUCH</span>, jadiii, will youu be my girlfriend from now andd foroverrr???"
             </h2>
-            <p class="font-script text-2xl text-sky-900 mt-2 font-bold">~ Sabrina Octariana ~</p>
+            <p class="font-script text-2xl text-sky-800 mt-2 font-bold">~ Sabrina Octariana ~</p>
           </div>
 
           <!-- Runaway Playground Area (Click-only dodge) -->
@@ -376,19 +377,19 @@
             <div id="proposalActionContainer" class="flex flex-col sm:flex-row items-center justify-center gap-3 relative min-h-[90px]">
               
               <!-- Pilihan 1: MAUU -->
-              <button onclick="handleAcceptProposal()" class="w-full sm:w-1/2 py-3 px-5 rounded-2xl bg-gradient-to-r from-sky-600 to-blue-600 hover:from-sky-700 hover:to-blue-700 text-white font-bold text-sm sm:text-base shadow-md hover:shadow-sky-300/40 transition-all duration-200 transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2 z-10">
+              <button onclick="handleAcceptProposal()" class="w-full sm:w-1/2 py-3 px-5 rounded-2xl bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-600 hover:to-sky-700 text-white font-bold text-sm sm:text-base shadow-md hover:shadow-sky-300/50 transition-all duration-200 transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2 z-10">
                 <i class="fa-solid fa-heart"></i>
                 <span>MAUU ❤️</span>
               </button>
 
               <!-- Pilihan 2: gamauk wlee (DODGES ONLY ON CLICK) -->
-              <button id="runawayBtn" onclick="dodgeGamaukClick(event)" class="w-full sm:w-1/2 py-3 px-5 rounded-2xl border border-slate-300 bg-white/90 hover:bg-white text-slate-700 font-semibold text-sm sm:text-base transition-all duration-200 select-none shadow-sm cursor-pointer whitespace-nowrap active:scale-90 z-20">
+              <button id="runawayBtn" onclick="dodgeGamaukClick(event)" class="w-full sm:w-1/2 py-3 px-5 rounded-2xl border border-sky-300 bg-white/95 hover:bg-white text-sky-900 font-semibold text-sm sm:text-base transition-all duration-200 select-none shadow-sm cursor-pointer whitespace-nowrap active:scale-90 z-20">
                 gamauk wlee 😜
               </button>
             </div>
 
             <div class="mt-2 text-center">
-              <button onclick="goToSlide(2)" class="text-xs text-slate-500 hover:text-slate-800 underline decoration-dotted transition-colors">
+              <button onclick="goToSlide(2)" class="text-xs text-sky-700 hover:text-sky-950 underline decoration-dotted transition-colors">
                 <i class="fa-solid fa-arrow-left mr-1"></i> Kembali ke teks sebelumnya
               </button>
             </div>
@@ -401,19 +402,19 @@
             <div class="text-5xl animate-bounce mb-3">
               🥳💖✨
             </div>
-            <h2 class="text-lg sm:text-xl font-extrabold text-sky-900 leading-snug">
+            <h2 class="text-lg sm:text-xl font-extrabold text-sky-950 leading-snug">
               "YIIPPPPPPIIIIIIII, TIMAAACIIIIIII SUDAAA MAWWW NERIMAA AKUU MWEHEHEHEHEH, ILYSMMMMM"
             </h2>
-            <p class="font-fancy text-2xl text-rose-500 font-bold mt-3">
+            <p class="font-fancy text-2xl text-sky-700 font-bold mt-3">
               Officially Together! 🩵
             </p>
           </div>
 
           <div class="grid grid-cols-2 gap-3 pt-2">
-            <button onclick="goToSlide(3)" class="py-2.5 px-4 rounded-xl border border-slate-300 bg-white/80 hover:bg-white text-slate-700 font-semibold text-xs sm:text-sm transition-all duration-200">
+            <button onclick="goToSlide(3)" class="py-2.5 px-4 rounded-xl border border-sky-200 bg-white/90 hover:bg-white text-sky-900 font-semibold text-xs sm:text-sm transition-all duration-200">
               <i class="fa-solid fa-arrow-left mr-1"></i> Kembali
             </button>
-            <button onclick="goToSlide(5)" class="py-2.5 px-4 rounded-xl border-2 border-sky-600 bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs sm:text-sm transition-all duration-200 shadow-sm flex items-center justify-center gap-2">
+            <button onclick="goToSlide(5)" class="py-2.5 px-4 rounded-xl border-2 border-sky-500 bg-sky-500 hover:bg-sky-600 text-white font-bold text-xs sm:text-sm transition-all duration-200 shadow-sm flex items-center justify-center gap-2">
               <span>Selanjutnya 💌</span>
               <i class="fa-solid fa-arrow-right"></i>
             </button>
@@ -423,46 +424,46 @@
         <!-- ================= SLIDE 5: HUBUNGAN ================= -->
         <section id="slide5" class="slide-wrapper">
           <div class="my-auto text-center px-1">
-            <div class="w-10 h-10 rounded-full bg-sky-100 text-sky-700 flex items-center justify-center mx-auto mb-2 text-base">
+            <div class="w-10 h-10 rounded-full bg-sky-100 text-sky-700 flex items-center justify-center mx-auto mb-2 text-base border border-sky-200">
               🤝
             </div>
             <h2 class="text-base sm:text-lg font-bold text-deepNavy">
               "Kamuu mauu hubungan ini sepertii bagaimanaa?"
             </h2>
-            <p class="text-xs text-slate-500 mt-0.5">Pilih salah satu sesuai kenyamanan kamu yaa:</p>
+            <p class="text-xs text-sky-700 mt-0.5">Pilih salah satu sesuai kenyamanan kamu yaa:</p>
 
             <div class="mt-4 space-y-2.5 text-left">
-              <button onclick="chooseRelationship('Public')" class="w-full p-3 rounded-2xl border-2 border-white/90 bg-white/80 hover:bg-white hover:border-sky-500 text-slate-800 font-semibold text-xs sm:text-sm transition-all duration-200 flex items-center justify-between group shadow-sm">
+              <button onclick="chooseRelationship('Public')" class="w-full p-3 rounded-2xl border-2 border-sky-100 bg-white/90 hover:bg-white hover:border-sky-400 text-sky-950 font-semibold text-xs sm:text-sm transition-all duration-200 flex items-center justify-between group shadow-sm">
                 <span class="flex items-center gap-3">
-                  <span class="w-7 h-7 rounded-xl bg-sky-50 flex items-center justify-center text-sky-700 text-xs">🌍</span>
+                  <span class="w-7 h-7 rounded-xl bg-sky-100 flex items-center justify-center text-sky-700 text-xs">🌍</span>
                   <span>1. Public</span>
                 </span>
-                <i class="fa-solid fa-circle-check text-slate-300 group-hover:text-sky-600 transition-colors"></i>
+                <i class="fa-solid fa-circle-check text-sky-200 group-hover:text-sky-500 transition-colors"></i>
               </button>
 
-              <button onclick="chooseRelationship('Private but not secret')" class="w-full p-3 rounded-2xl border-2 border-white/90 bg-white/80 hover:bg-white hover:border-sky-500 text-slate-800 font-semibold text-xs sm:text-sm transition-all duration-200 flex items-center justify-between group shadow-sm">
+              <button onclick="chooseRelationship('Private but not secret')" class="w-full p-3 rounded-2xl border-2 border-sky-100 bg-white/90 hover:bg-white hover:border-sky-400 text-sky-950 font-semibold text-xs sm:text-sm transition-all duration-200 flex items-center justify-between group shadow-sm">
                 <span class="flex items-center gap-3">
-                  <span class="w-7 h-7 rounded-xl bg-sky-50 flex items-center justify-center text-sky-700 text-xs">🔐</span>
+                  <span class="w-7 h-7 rounded-xl bg-sky-100 flex items-center justify-center text-sky-700 text-xs">🔐</span>
                   <span>2. Private but not secret</span>
                 </span>
-                <i class="fa-solid fa-circle-check text-slate-300 group-hover:text-sky-600 transition-colors"></i>
+                <i class="fa-solid fa-circle-check text-sky-200 group-hover:text-sky-500 transition-colors"></i>
               </button>
 
-              <button onclick="chooseRelationship('Private only')" class="w-full p-3 rounded-2xl border-2 border-white/90 bg-white/80 hover:bg-white hover:border-sky-500 text-slate-800 font-semibold text-xs sm:text-sm transition-all duration-200 flex items-center justify-between group shadow-sm">
+              <button onclick="chooseRelationship('Private only')" class="w-full p-3 rounded-2xl border-2 border-sky-100 bg-white/90 hover:bg-white hover:border-sky-400 text-sky-950 font-semibold text-xs sm:text-sm transition-all duration-200 flex items-center justify-between group shadow-sm">
                 <span class="flex items-center gap-3">
-                  <span class="w-7 h-7 rounded-xl bg-sky-50 flex items-center justify-center text-sky-700 text-xs">🤫</span>
+                  <span class="w-7 h-7 rounded-xl bg-sky-100 flex items-center justify-center text-sky-700 text-xs">🤫</span>
                   <span>3. Private only</span>
                 </span>
-                <i class="fa-solid fa-circle-check text-slate-300 group-hover:text-sky-600 transition-colors"></i>
+                <i class="fa-solid fa-circle-check text-sky-200 group-hover:text-sky-500 transition-colors"></i>
               </button>
             </div>
           </div>
 
           <div class="grid grid-cols-2 gap-3 pt-2">
-            <button onclick="goToSlide(4)" class="py-2.5 px-4 rounded-xl border border-slate-300 bg-white/80 hover:bg-white text-slate-700 font-semibold text-xs sm:text-sm transition-all duration-200">
+            <button onclick="goToSlide(4)" class="py-2.5 px-4 rounded-xl border border-sky-200 bg-white/90 hover:bg-white text-sky-900 font-semibold text-xs sm:text-sm transition-all duration-200">
               <i class="fa-solid fa-arrow-left mr-1"></i> Kembali
             </button>
-            <button onclick="goToSlide(6)" class="py-2.5 px-4 rounded-xl border-2 border-sky-600 bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs sm:text-sm transition-all duration-200 shadow-sm flex items-center justify-center gap-2">
+            <button onclick="goToSlide(6)" class="py-2.5 px-4 rounded-xl border-2 border-sky-500 bg-sky-500 hover:bg-sky-600 text-white font-bold text-xs sm:text-sm transition-all duration-200 shadow-sm flex items-center justify-center gap-2">
               <span>Selanjutnya</span>
               <i class="fa-solid fa-arrow-right"></i>
             </button>
@@ -472,17 +473,17 @@
         <!-- ================= SLIDE 6: KEJUJURAN TIKTOK ================= -->
         <section id="slide6" class="slide-wrapper">
           <div>
-            <div class="flex items-center gap-2 text-deepNavy font-bold mb-2 text-xs sm:text-sm">
+            <div class="flex items-center gap-2 text-sky-950 font-bold mb-2 text-xs sm:text-sm">
               <span class="w-6 h-6 rounded-full bg-sky-100 text-sky-700 flex items-center justify-center text-xs">🤫</span>
               <span>Oiyaaa satu lagii, aku mww jujurrr...</span>
             </div>
 
-            <div class="bg-white/70 p-4 sm:p-5 rounded-2xl border border-sky-100 h-[340px] sm:h-[310px] overflow-y-auto inner-scroll text-slate-700 text-xs sm:text-sm leading-relaxed space-y-3">
+            <div class="bg-sky-50/70 p-4 sm:p-5 rounded-2xl border border-sky-200 h-[340px] sm:h-[310px] overflow-y-auto inner-scroll text-slate-700 text-xs sm:text-sm leading-relaxed space-y-3">
               <p>
                 "oiyaaaa satuu lagii, akuu mww jujurrr, sebenarnyaaaa sehariii sebelumm akuu punyaa nomor wa kamuu, akuu tanpaa sengajaa nemuu akun tiktok kamuu yang khusus upload keseharian kamuu, jujurr tidaaa adaa label kayak "orang yang mungkin anda kenal" ituu tidaak, cuma tiba tibaa lewat di fyp akuu, jujurr meskipun kita sudaahh resmii/official, akuu tidaa mempersalahkan ituu, entah kamuuu pengen uploadd video/fotoo keseharian kamuuu ituu bebasss,
               </p>
               <p>
-                akuu tidaaa melarangg kesenangan kamuu, <span class="font-bold text-sky-800">tapyyy dengann catataannn, kamuuu taww bataasss otaayy??</span> maksudkuu kayakk kaloo kamuu tiba tibaaa di dm orangg lainn atau siapapun yangg bukann temenn kamuu, kayak istilahnya "buwaya" gituu akuu mintaa tolongg jangann dii baless/dijawabb yaaaa,
+                akuu tidaaa melarangg kesenangan kamuu, <span class="font-bold text-sky-700">tapyyy dengann catataannn, kamuuu taww bataasss otaayy??</span> maksudkuu kayakk kaloo kamuu tiba tibaaa di dm orangg lainn atau siapapun yangg bukann temenn kamuu, kayak istilahnya "buwaya" gituu akuu mintaa tolongg jangann dii baless/dijawabb yaaaa,
               </p>
               <p>
                 maafff yaaa akuu baruu ngomongg sekaranggg, alasannyaaaa akuuu pengenn kamuu ngerasaa bebass tanpaaa tauu kaloo akuu udahh mengetahui akunn kamuuu gituu, jadii kamu bisaa lebihh merasaa bebass gituuu ehheheheh, akuu sangattt menghargaii kebebasann kamuu, aku tidaa mauu kamu merasa tertekan/di kekang gituuu mwehheehhe, ituu sajaa yg akuu pengen kasii taww ehehhehe"
@@ -491,10 +492,10 @@
           </div>
 
           <div class="grid grid-cols-2 gap-3 pt-2">
-            <button onclick="goToSlide(5)" class="py-2.5 px-4 rounded-xl border border-slate-300 bg-white/80 hover:bg-white text-slate-700 font-semibold text-xs sm:text-sm transition-all duration-200">
+            <button onclick="goToSlide(5)" class="py-2.5 px-4 rounded-xl border border-sky-200 bg-white/90 hover:bg-white text-sky-900 font-semibold text-xs sm:text-sm transition-all duration-200">
               <i class="fa-solid fa-arrow-left mr-1"></i> Kembali
             </button>
-            <button onclick="goToSlide(7)" class="py-2.5 px-4 rounded-xl border-2 border-sky-600 bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs sm:text-sm transition-all duration-200 shadow-sm flex items-center justify-center gap-2">
+            <button onclick="goToSlide(7)" class="py-2.5 px-4 rounded-xl border-2 border-sky-500 bg-sky-500 hover:bg-sky-600 text-white font-bold text-xs sm:text-sm transition-all duration-200 shadow-sm flex items-center justify-center gap-2">
               <span>Selanjutnya</span>
               <i class="fa-solid fa-arrow-right"></i>
             </button>
@@ -504,12 +505,12 @@
         <!-- ================= SLIDE 7: PERJANJIAN ================= -->
         <section id="slide7" class="slide-wrapper">
           <div>
-            <div class="flex items-center gap-2 text-deepNavy font-bold mb-2 text-xs sm:text-sm">
+            <div class="flex items-center gap-2 text-sky-950 font-bold mb-2 text-xs sm:text-sm">
               <span class="w-6 h-6 rounded-full bg-sky-100 text-sky-700 flex items-center justify-center text-xs">🤙</span>
               <span>Perjanjian Manis Kita</span>
             </div>
 
-            <div class="bg-white/70 p-3.5 sm:p-4 rounded-2xl border border-sky-100 h-[200px] sm:h-[180px] overflow-y-auto inner-scroll text-slate-700 text-xs sm:text-sm leading-relaxed space-y-2 mb-3">
+            <div class="bg-sky-50/70 p-3.5 sm:p-4 rounded-2xl border border-sky-200 h-[200px] sm:h-[180px] overflow-y-auto inner-scroll text-slate-700 text-xs sm:text-sm leading-relaxed space-y-2 mb-3">
               <p class="font-bold text-sky-900">
                 "Kitaa buwatt perjanjiann baruuu apakahh kamuu maw?
               </p>
@@ -517,75 +518,76 @@
                 perjanjiannyaa yaituu jikaa kedepannyaaa kitaa menghadapi suatuu masalahh yang membuat kita kayak mungkin beradu argumenn (amiitt amitt jangan sampee) kitaa selesaikan masalahh ituu samaa samaaa okeeeyy?
               </p>
               <p>
-                kitaaa ngambekk boleehh tapii jangan keterusann atauu mencarii penggantiii, pastii kitaa tidakk bisaa kayakk langsung memaafkann jika salah satuu darii kitaa yang salaahh, jadiii kaloo kitaa lagii pengen butuh ruang/me time, jangan lupaaa untukk mengabarii yaaa. <span class="font-bold text-deepNavy">Janjiiiii???</span>"
+                kitaaa ngambekk boleehh tapii jangan keterusann atauu mencarii penggantiii, pastii kitaa tidakk bisaa kayakk langsung memaafkann jika salah satuu darii kitaa yang salaahh, jadiii kaloo kitaa lagii pengen butuh ruang/me time, jangan lupaaa untukk mengabarii yaaa. <span class="font-bold text-sky-950">Janjiiiii???</span>"
               </p>
             </div>
 
             <!-- Choices -->
             <div class="space-y-2">
-              <button onclick="confirmPromise('Janjiiiii')" class="w-full py-2.5 px-4 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs sm:text-sm transition-all duration-200 flex items-center justify-center gap-2 shadow-sm active:scale-95">
+              <button onclick="confirmPromise('Janjiiiii')" class="w-full py-2.5 px-4 rounded-xl bg-sky-500 hover:bg-sky-600 text-white font-bold text-xs sm:text-sm transition-all duration-200 flex items-center justify-center gap-2 shadow-sm active:scale-95">
                 <span>1. Janjiiiii 🤙</span>
               </button>
               <button onclick="confirmPromise('Insyaallah')" class="w-full py-2.5 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm transition-all duration-200 flex items-center justify-center gap-2 shadow-sm active:scale-95">
                 <span>2. Insyaallah 🤲</span>
               </button>
-              <button id="refusePromiseBtn" onclick="handleRefusePromise(event)" class="w-full py-2 px-4 rounded-xl border border-slate-300 bg-white/80 hover:bg-white text-slate-600 font-semibold text-xs sm:text-sm transition-all duration-150 active:scale-95">
+              <button id="refusePromiseBtn" onclick="handleRefusePromise(event)" class="w-full py-2 px-4 rounded-xl border border-sky-200 bg-white/90 hover:bg-white text-sky-800 font-semibold text-xs sm:text-sm transition-all duration-150 active:scale-95">
                 3. tidak maw 😝
               </button>
             </div>
           </div>
 
           <div class="pt-2 text-center">
-            <button onclick="goToSlide(6)" class="text-xs text-slate-500 hover:text-slate-800 underline decoration-dotted transition-colors">
+            <button onclick="goToSlide(6)" class="text-xs text-sky-700 hover:text-sky-950 underline decoration-dotted transition-colors">
               <i class="fa-solid fa-arrow-left mr-1"></i> Kembali ke teks sebelumnya
             </button>
           </div>
         </section>
 
-        <!-- ================= NEW SLIDE 8: PILIHAN PANGGILAN ================= -->
+
+        <!-- ================= SLIDE 8: PILIHAN PANGGILAN ================= -->
         <section id="slide8" class="slide-wrapper">
           <div class="my-auto text-center px-1">
-            <div class="w-11 h-11 rounded-full bg-sky-100 text-sky-700 flex items-center justify-center mx-auto mb-2 text-xl shadow-inner">
+            <div class="w-11 h-11 rounded-full bg-sky-100 text-sky-700 flex items-center justify-center mx-auto mb-2 text-xl shadow-inner border border-sky-200">
               🏷️
             </div>
             <h2 class="text-base sm:text-lg font-bold text-deepNavy">
               "kamu pengen pake panggilann apaaa??"
             </h2>
-            <p class="text-xs text-slate-500 mt-0.5">Pilih panggilan manis yang kamu sukai yaa:</p>
+            <p class="text-xs text-sky-700 mt-0.5">Pilih panggilan manis yang kamu sukai yaa:</p>
 
             <div class="mt-3.5 space-y-2.5 text-left">
               <!-- Option 1 -->
-              <button onclick="selectNicknameOption('nama_asli')" id="optNickname1" class="w-full p-3 rounded-2xl border-2 border-white/90 bg-white/80 hover:bg-white hover:border-sky-500 text-slate-800 font-semibold text-xs sm:text-sm transition-all duration-200 flex items-center justify-between group shadow-sm">
+              <button onclick="selectNicknameOption('nama_asli')" id="optNickname1" class="w-full p-3 rounded-2xl border-2 border-sky-100 bg-white/90 hover:bg-white hover:border-sky-400 text-sky-950 font-semibold text-xs sm:text-sm transition-all duration-200 flex items-center justify-between group shadow-sm">
                 <span class="flex items-center gap-2.5">
-                  <span class="w-7 h-7 rounded-xl bg-sky-50 flex items-center justify-center text-sky-700 text-xs">✨</span>
+                  <span class="w-7 h-7 rounded-xl bg-sky-100 flex items-center justify-center text-sky-700 text-xs">✨</span>
                   <span>1. pake nama aslii</span>
                 </span>
-                <i class="fa-solid fa-circle-check text-slate-300 group-hover:text-sky-600 transition-colors"></i>
+                <i class="fa-solid fa-circle-check text-sky-200 group-hover:text-sky-500 transition-colors"></i>
               </button>
 
               <!-- Option 2 -->
-              <button onclick="selectNicknameOption('nickname')" id="optNickname2" class="w-full p-3 rounded-2xl border-2 border-white/90 bg-white/80 hover:bg-white hover:border-sky-500 text-slate-800 font-semibold text-xs sm:text-sm transition-all duration-200 flex items-center justify-between group shadow-sm">
+              <button onclick="selectNicknameOption('nickname')" id="optNickname2" class="w-full p-3 rounded-2xl border-2 border-sky-100 bg-white/90 hover:bg-white hover:border-sky-400 text-sky-950 font-semibold text-xs sm:text-sm transition-all duration-200 flex items-center justify-between group shadow-sm">
                 <span class="flex items-center gap-2.5 text-left">
-                  <span class="w-7 h-7 rounded-xl bg-sky-50 flex items-center justify-center text-sky-700 text-xs flex-shrink-0">🐱</span>
-                  <span class="leading-tight">2. pake nickname / plesetan <span class="block text-[10px] text-slate-500 font-normal">contoh : miung, eming, nunung, nanasgor</span></span>
+                  <span class="w-7 h-7 rounded-xl bg-sky-100 flex items-center justify-center text-sky-700 text-xs flex-shrink-0">🐱</span>
+                  <span class="leading-tight">2. pake nickname / plesetan <span class="block text-[10px] text-sky-700 font-normal">contoh : miung, eming, nunung, nanasgor</span></span>
                 </span>
-                <i class="fa-solid fa-circle-check text-slate-300 group-hover:text-sky-600 transition-colors"></i>
+                <i class="fa-solid fa-circle-check text-sky-200 group-hover:text-sky-500 transition-colors"></i>
               </button>
 
               <!-- Option 3 (Custom) -->
-              <button onclick="selectNicknameOption('custom')" id="optNickname3" class="w-full p-3 rounded-2xl border-2 border-white/90 bg-white/80 hover:bg-white hover:border-sky-500 text-slate-800 font-semibold text-xs sm:text-sm transition-all duration-200 flex items-center justify-between group shadow-sm">
+              <button onclick="selectNicknameOption('custom')" id="optNickname3" class="w-full p-3 rounded-2xl border-2 border-sky-100 bg-white/90 hover:bg-white hover:border-sky-400 text-sky-950 font-semibold text-xs sm:text-sm transition-all duration-200 flex items-center justify-between group shadow-sm">
                 <span class="flex items-center gap-2.5">
-                  <span class="w-7 h-7 rounded-xl bg-sky-50 flex items-center justify-center text-sky-700 text-xs">✍️</span>
+                  <span class="w-7 h-7 rounded-xl bg-sky-100 flex items-center justify-center text-sky-700 text-xs">✍️</span>
                   <span>3. custom (ketik sendiri)</span>
                 </span>
-                <i class="fa-solid fa-circle-check text-slate-300 group-hover:text-sky-600 transition-colors"></i>
+                <i class="fa-solid fa-circle-check text-sky-200 group-hover:text-sky-500 transition-colors"></i>
               </button>
 
-              <!-- Custom Input Box (Appears when Option 3 is clicked) -->
+              <!-- Custom Input Box -->
               <div id="customNicknameBox" class="hidden pt-1.5 transition-all duration-300">
-                <div class="bg-sky-50/80 p-3 rounded-2xl border border-sky-200 flex flex-col gap-2">
-                  <label class="text-[11px] font-bold text-sky-900 flex items-center gap-1.5">
-                    <i class="fa-solid fa-heart text-sky-600 text-xs"></i> Masukkan panggilan custom kamu:
+                <div class="bg-sky-50 p-3 rounded-2xl border border-sky-300 flex flex-col gap-2 shadow-inner">
+                  <label class="text-[11px] font-bold text-sky-950 flex items-center gap-1.5">
+                    <i class="fa-solid fa-heart text-sky-500 text-xs"></i> Masukkan panggilan custom kamu:
                   </label>
                   <div class="flex gap-2">
                     <input 
@@ -595,7 +597,7 @@
                       class="flex-1 px-3 py-2 text-xs rounded-xl bg-white border border-sky-300 focus:outline-none focus:ring-2 focus:ring-sky-500 text-slate-800 font-medium placeholder-slate-400"
                       maxlength="30"
                     />
-                    <button onclick="submitCustomNickname()" class="py-2 px-3.5 bg-sky-600 hover:bg-sky-700 text-white rounded-xl text-xs font-bold transition-all shadow-sm active:scale-95 flex items-center gap-1">
+                    <button onclick="submitCustomNickname()" class="py-2 px-3.5 bg-sky-500 hover:bg-sky-600 text-white rounded-xl text-xs font-bold transition-all shadow-sm active:scale-95 flex items-center gap-1">
                       <span>Simpan</span>
                       <i class="fa-solid fa-check"></i>
                     </button>
@@ -606,20 +608,64 @@
           </div>
 
           <div class="grid grid-cols-2 gap-3 pt-2">
-            <button onclick="goToSlide(7)" class="py-2.5 px-4 rounded-xl border border-slate-300 bg-white/80 hover:bg-white text-slate-700 font-semibold text-xs sm:text-sm transition-all duration-200">
+            <button onclick="goToSlide(7)" class="py-2.5 px-4 rounded-xl border border-sky-200 bg-white/90 hover:bg-white text-sky-900 font-semibold text-xs sm:text-sm transition-all duration-200">
               <i class="fa-solid fa-arrow-left mr-1"></i> Kembali
             </button>
-            <button onclick="goToSlide(9)" class="py-2.5 px-4 rounded-xl border-2 border-sky-600 bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs sm:text-sm transition-all duration-200 shadow-sm flex items-center justify-center gap-2">
+            <button onclick="goToSlide(9)" class="py-2.5 px-4 rounded-xl border-2 border-sky-500 bg-sky-500 hover:bg-sky-600 text-white font-bold text-xs sm:text-sm transition-all duration-200 shadow-sm flex items-center justify-center gap-2">
               <span>Selanjutnya</span>
               <i class="fa-solid fa-arrow-right"></i>
             </button>
           </div>
         </section>
 
-        <!-- ================= SLIDE 9: FINAL CELEBRATION & POLAROID SABRINA ================= -->
+        <!-- ================= NEW SLIDE 9: AFINITAS MOLE ================= -->
         <section id="slide9" class="slide-wrapper">
+          <div class="my-auto text-center px-1">
+            <div class="w-12 h-12 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center mx-auto mb-2 text-2xl shadow-inner border border-sky-200 animate-pulse">
+              🌸🎮
+            </div>
+
+            <div class="bg-sky-50/80 p-4 sm:p-5 rounded-2xl border border-sky-200 shadow-sm text-slate-800 text-xs sm:text-sm leading-relaxed mb-4">
+              <p class="font-bold text-sky-950 text-sm sm:text-base mb-1.5">
+                "apakaahh afinitas dii molee nantiii kamuuu terimaa?"
+              </p>
+              <p class="text-slate-700">
+                kaloo diterimaa udahh level 5 taukkk, udah mekar sekalii bungaanyaa mwehehe, jujur akuu baru kalii inii se mekar itu <span class="font-bold text-sky-700">AHAHAHAH</span>
+              </p>
+            </div>
+
+            <!-- Choices for Afinitas -->
+            <div class="space-y-2.5">
+              <button onclick="handleAfinitasChoice('MAAAWWW')" class="w-full py-3 px-4 rounded-2xl bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-600 hover:to-sky-700 text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-sky-300/40 transition-all duration-200 flex items-center justify-center gap-2 active:scale-95">
+                <span>1. MAAAWWW 🌸💖</span>
+              </button>
+
+              <button onclick="handleAfinitasChoice('Aku pikirin duluuu')" class="w-full py-2.5 px-4 rounded-2xl border-2 border-sky-200 bg-white/90 hover:bg-white text-sky-900 font-semibold text-xs sm:text-sm shadow-sm transition-all duration-200 flex items-center justify-center gap-2 active:scale-95">
+                <span>2. Aku pikirin duluuu 🤔✨</span>
+              </button>
+
+              <button id="afinitasDodgeBtn" onclick="handleAfinitasGamaw(event)" class="w-full py-2 px-4 rounded-xl border border-sky-300 bg-white/80 hover:bg-white text-slate-600 font-medium text-xs sm:text-sm transition-all duration-200 active:scale-95">
+                3. gamaww wleee 😜
+              </button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3 pt-2">
+            <button onclick="goToSlide(8)" class="py-2.5 px-4 rounded-xl border border-sky-200 bg-white/90 hover:bg-white text-sky-900 font-semibold text-xs sm:text-sm transition-all duration-200">
+              <i class="fa-solid fa-arrow-left mr-1"></i> Kembali
+            </button>
+            <button onclick="goToSlide(10)" class="py-2.5 px-4 rounded-xl border-2 border-sky-500 bg-sky-500 hover:bg-sky-600 text-white font-bold text-xs sm:text-sm transition-all duration-200 shadow-sm flex items-center justify-center gap-2">
+              <span>Selanjutnya</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </section>
+
+
+        <!-- ================= SLIDE 10: FINAL CELEBRATION & POLAROID SABRINA ================= -->
+        <section id="slide10" class="slide-wrapper">
           <div class="my-auto flex flex-col justify-center items-center text-center px-1 overflow-y-auto inner-scroll max-h-[360px] py-1">
-            <div class="w-12 h-12 rounded-full bg-sky-100 flex items-center justify-center text-2xl mb-2 shadow-sm animate-bounce text-sky-700">
+            <div class="w-12 h-12 rounded-full bg-sky-100 flex items-center justify-center text-2xl mb-2 shadow-sm animate-bounce text-sky-600 border border-sky-200">
               🎉✨
             </div>
 
@@ -627,10 +673,10 @@
               "YIIPPPPPPIIIIIII, TIMAAACIIII SUDAAA MEMBACAAA SAMPEEE AKHIRRR MWEHEHEH, i wish u thee besstttttttt, selaluuu semangaattt bekerjaaaa dann sehattt selaluuuuuuuu, <span class="text-sky-700 font-extrabold">see youuu 3 years laterrrr in real lifeee:3</span>"
             </h2>
 
-            <!-- Aesthetic Polaroid of Sabrina (image_1f4297.png) -->
-            <div class="mt-3 relative bg-white p-2.5 pb-3 rounded-md shadow-lg border border-slate-200 transform rotate-1 hover:rotate-0 hover:scale-105 transition-all duration-300 w-36 sm:w-44 select-none group">
-              <!-- Soft Sky Pastel washi tape -->
-              <div class="absolute -top-2.5 left-1/2 -translate-x-1/2 w-14 h-4 bg-sky-200/80 backdrop-blur-sm rotate-1 rounded-sm border-t border-b border-white/60 shadow-sm pointer-events-none"></div>
+            <!-- Aesthetic Polaroid of Sabrina strictly labeled 'Sabrina 🩵' -->
+            <div class="mt-3 relative bg-white p-2.5 pb-3 rounded-md shadow-lg border border-sky-100 transform rotate-1 hover:rotate-0 hover:scale-105 transition-all duration-300 w-36 sm:w-44 select-none group">
+              <!-- Vibrant Sky Pastel washi tape -->
+              <div class="absolute -top-2.5 left-1/2 -translate-x-1/2 w-14 h-4 bg-sky-300/80 backdrop-blur-sm rotate-1 rounded-sm border-t border-b border-white shadow-sm pointer-events-none"></div>
 
               <!-- Photo 3 Container -->
               <div class="overflow-hidden rounded bg-slate-900 aspect-[3/4] relative shadow-inner">
@@ -641,7 +687,7 @@
                   class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
                 />
-                <div class="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-white/10 pointer-events-none"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-sky-950/30 via-transparent to-white/10 pointer-events-none"></div>
               </div>
 
               <!-- Polaroid Caption strictly 'Sabrina 🩵' -->
@@ -649,17 +695,17 @@
                 <p class="font-script text-base sm:text-lg text-sky-950 font-bold leading-none tracking-wide">
                   Sabrina 🩵
                 </p>
-                <p class="text-[9px] text-slate-500 font-mono mt-0.5 tracking-wider">My Favorite Person ✨</p>
+                <p class="text-[9px] text-sky-700 font-mono mt-0.5 tracking-wider">My Favorite Person ✨</p>
               </div>
             </div>
           </div>
 
           <div class="grid grid-cols-2 gap-3 pt-2">
-            <button onclick="goToSlide(0)" class="py-2.5 px-3 rounded-xl border border-slate-300 bg-white/80 hover:bg-white text-slate-700 font-semibold text-xs sm:text-sm transition-all flex items-center justify-center gap-1.5">
+            <button onclick="goToSlide(0)" class="py-2.5 px-3 rounded-xl border border-sky-200 bg-white/90 hover:bg-white text-sky-900 font-semibold text-xs sm:text-sm transition-all flex items-center justify-center gap-1.5">
               <i class="fa-solid fa-rotate-left"></i>
               <span>Mulai Dari Awal</span>
             </button>
-            <button onclick="launchLoveConfetti()" class="py-2.5 px-3 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs sm:text-sm shadow-md transition-all flex items-center justify-center gap-1.5">
+            <button onclick="launchLoveConfetti()" class="py-2.5 px-3 rounded-xl bg-sky-500 hover:bg-sky-600 text-white font-bold text-xs sm:text-sm shadow-md transition-all flex items-center justify-center gap-1.5">
               <i class="fa-solid fa-heart"></i>
               <span>Kembang Api Cinta 🩵</span>
             </button>
@@ -670,22 +716,24 @@
     </div>
 
     <!-- Soft Blue Footer -->
-    <footer class="mt-3 text-center text-xs text-slate-600 font-medium">
-      Created with lots of love for <strong class="text-deepNavy">Sabrina Octariana (24)</strong> 💙
+    <footer class="mt-3 text-center text-xs text-sky-900 font-medium">
+      Created with lots of love for <strong class="text-sky-950">Sabrina Octariana (24)</strong> 🩵
     </footer>
   </main>
 
   <!-- Notification Toast -->
-  <div id="toastNotification" class="fixed bottom-5 left-1/2 -translate-x-1/2 bg-slate-900/90 backdrop-blur-md text-white px-4 py-2 rounded-full text-xs font-medium shadow-2xl opacity-0 pointer-events-none transition-all duration-300 z-50 flex items-center gap-2">
+  <div id="toastNotification" class="fixed bottom-5 left-1/2 -translate-x-1/2 bg-sky-950/95 backdrop-blur-md text-white px-4 py-2 rounded-full text-xs font-medium shadow-2xl opacity-0 pointer-events-none transition-all duration-300 z-50 flex items-center gap-2 border border-sky-400/30">
     <span id="toastIcon">🩵</span>
     <span id="toastText">Pesan</span>
   </div>
 
+
   <script>
-    // State management: 10 slides (0 to 9)
+    // State management: 11 slides (0 to 10)
     let currentSlide = 0;
-    const totalSlides = 10;
+    const totalSlides = 11;
     let runawayClickCount = 0;
+    let afinitasGamawCount = 0;
     let selectedNicknameChoice = "";
 
     // Toast message function
@@ -756,7 +804,7 @@
 
     function onPlayerError(e) {
       console.warn("YouTube iframe error code:", e.data);
-      showToast("Klik tombol YouTube di atas jika pemutar dibatasi oleh jaringan", "ℹ️");
+      showToast("Klik tombol YouTube di atas jika pemutar dibatasi oleh browser", "ℹ️");
     }
 
     function setMusicUIState(playing) {
@@ -815,7 +863,7 @@
       for (let i = 0; i < totalSlides; i++) {
         const dot = document.createElement('div');
         dot.className = `h-1.5 rounded-full transition-all duration-300 ${
-          i === currentSlide ? 'w-6 bg-sky-600' : 'w-2 bg-slate-300'
+          i === currentSlide ? 'w-5 bg-sky-500' : 'w-1.5 bg-sky-200'
         }`;
         container.appendChild(dot);
       }
@@ -839,7 +887,7 @@
 
       if (targetSlide === 0) {
         runSlide0Animation();
-      } else if (targetSlide === 4 || targetSlide === 9) {
+      } else if (targetSlide === 4 || targetSlide === 10) {
         launchLoveConfetti();
       }
     }
@@ -868,7 +916,7 @@
       }, 700);
     }
 
-    // ================= RUNAWAY BUTTON (CLICK-ONLY) =================
+    // ================= RUNAWAY BUTTON (PROPOSAL SLIDE 3) =================
     function dodgeGamaukClick(e) {
       if (e) e.stopPropagation();
       const btn = document.getElementById('runawayBtn');
@@ -958,6 +1006,38 @@
       }, 900);
     }
 
+    // ================= NEW AFINITAS SELECTION (SLIDE 9) =================
+    function handleAfinitasChoice(choice) {
+      if (choice === 'MAAAWWW') {
+        launchLoveConfetti();
+        showToast("ASIIKKK!! Bunga afinitas level 5 resmi mekaaarr!! 🌸🥰", "🎉");
+      } else {
+        showToast("Hehe gapapaa dipikirin duluu, yang penting bunganya udah mekar bangeett 🩵", "🌸");
+      }
+      setTimeout(() => {
+        goToSlide(10);
+      }, 1000);
+    }
+
+    function handleAfinitasGamaw(e) {
+      if (e) e.stopPropagation();
+      const btn = document.getElementById('afinitasDodgeBtn');
+      afinitasGamawCount++;
+
+      const teases = [
+        "gamaww wleee 😜",
+        "yakin gamau mekar? 🌸😝",
+        "sayang banget loh level 5! 🥺",
+        "pencet MAAAWWW ajaa mwehehe 🩵"
+      ];
+      btn.innerText = teases[afinitasGamawCount % teases.length];
+
+      const moveX = (Math.random() - 0.5) * 160;
+      const moveY = (Math.random() - 0.5) * 80;
+      btn.style.transform = `translate(${moveX}px, ${moveY}px)`;
+      showToast("Eits, masa gamau bunganya mekar wleee 😜", "😝");
+    }
+
     // ================= CURSOR LOVE TRAIL =================
     const loveSymbols = ['🩵', '💙', '🤍', '✨', '💖'];
     let lastParticleTime = 0;
@@ -1023,7 +1103,7 @@
       canvas.height = height;
     });
 
-    const totalPetals = 30;
+    const totalPetals = 32;
     const petals = [];
 
     class FlowerPetal {
@@ -1065,7 +1145,7 @@
         ctx.bezierCurveTo(this.size / 2, -this.size, this.size, -this.size / 2, 0, 0);
 
         ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
-        ctx.shadowColor = 'rgba(200, 223, 219, 0.6)';
+        ctx.shadowColor = 'rgba(125, 211, 252, 0.6)';
         ctx.shadowBlur = 6;
         ctx.fill();
         ctx.restore();
@@ -1092,7 +1172,7 @@
         const count = 180;
         const defaults = {
           origin: { y: 0.65 },
-          colors: ['#C8DFDB', '#bae6fd', '#38bdf8', '#ffffff', '#ff94b9', '#0284c7']
+          colors: ['#38bdf8', '#7dd3fc', '#bae6fd', '#ffffff', '#60a5fa', '#0284c7']
         };
 
         confetti({
